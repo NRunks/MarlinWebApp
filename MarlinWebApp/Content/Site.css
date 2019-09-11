@@ -1,24 +1,136 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿#app-container {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
+body {
+    padding-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(170deg, rgb(0,115,230),rgb(180,225,230), rgba(180,225,230,0));
+    background-repeat: no-repeat
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+footer {
+    height: 100px;
+    margin-top: auto;
+    animation: fadein 2s, moveleft 2s;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    footer > p {
+        font-family: 'Varela Round', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    footer > span {
+        font-family: Gayathri, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+#login-card {
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s, rise 2s;
 }
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(200px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveleft {
+    0% {
+        transform: translateX(500px);
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .7;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+a.custom-anchor {
+    color: rgb(0,115,230);
+    text-decoration: none;
+    transition: transform 5s;
+    display: inline-block;
+}
+
+    a.custom-anchor:hover {
+        color: rgb(0,90,180);
+        transform: scale(1.1);
+    }
+
+    a.custom-anchor:active {
+        color: rgb(0,115,230);
+        transform: scale(.9);
+    }

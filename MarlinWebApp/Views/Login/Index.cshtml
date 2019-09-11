@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-center">
+    <div id="login-card" class="card" style="width: 24rem;">
+        <!--<img class="card-img-top" src=".../100px180/" alt="Card image cap">-->
+        <img class="card-img-top" src="~/Content/Images/marlin.jpg" />
+        <div class="card-body">
+            <form asp-controller="Login" asp-action="Login" method="post">
+                <div class="input-group mb-3 form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">
+                            <img src="~/Content/Images/man.png" />
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon3" required>
+                </div>
+                <div class="input-group mb-3 form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">
+                            <img src="~/Content/Images/key.png" />
+                        </span>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon3" required>
+                </div>
+                <div class="row form-check">
+                    <div class="col-3"><button type="submit" class="btn btn-primary">Log in</button></div>
+                    <div><a href="#" class="custom-anchor">Not yet a member? Sign up now!</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
