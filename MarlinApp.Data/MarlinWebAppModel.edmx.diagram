@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f04cdbfb23e49c98df2a5674bddc7bf" Name="Diagram1">
+        <EntityTypeShape EntityType="MarlinModel.tblCategory" Width="1.5" PointX="3.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblDepartment" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblDocument" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblManufacturer" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblProduct" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblProperty" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblPropertyValue" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblSale" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblSubCategory" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblTechSpecFilter" Width="1.5" PointX="10.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblTypeFilter" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblUser" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="MarlinModel.tblSubCategory_Category_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblDepartment_Manufacturer_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblProduct_Document_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblManufacturer_User_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblProduct_Manufacturer_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblProduct_Sales_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblProduct_SubCategory_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblPropertyValue_Product_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblPropertyValue_Property_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblTechSpecFilter_Property_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblTypeFilter_Property_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblTechSpecFilter_SubCategory_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MarlinModel.tblTypeFilter_SubCategory_ID_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
