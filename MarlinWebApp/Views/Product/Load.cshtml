@@ -4,26 +4,47 @@
     ViewBag.Title = "Load";
 }
 <link rel="stylesheet" href="~/Content/ProductList.css" />
+<script>
+    function dropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+</script>
 <div class="header-wrapper">
     <img class="card-img-top" src="~/Content/Images/marlin.jpg" />
     <input type="text" placeholder="Search..">
-    <button type="submit" class="searchButton"><img src="~Content/Images/search.png" /> </button>
-    
+    <button type="submit" class="searchButton"><b>Find</b></button>
+
 </div>
+
 <dl class="dl-horizontal">
     <div class="row">
         <div class="column side">
-             <span style="margin-left:10px;">Search</span>
-            <span class="SaveClearbutton">
-                <input id="Save" type="button" value="Save" />
-                <input id="Clear" type="button" value="Clear" />
-            </span>
+            <div id="SearchSaveClear">
+                <span style="margin-left:10px;font-size:15px;color:grey">Search:</span>
+                <span class="SaveClearbutton">
+                    <input id="Save" type="button" value="Save" />
+                    <input id="Clear" type="button" value="Clear" />
+                </span>
+            </div>
+            <div id="ProductProject">
+                <input id="Product" type="button" value="Product" />
+                <input id="Project" type="button" value="Project" />
+            </div>
+            <div id="ProdcutType">
+                Product Type
+                <div class="dropdown">
+                    
+        
+                    </div>
+                </div>
+            </div>
+            <div class="ModelYear">
+                <span style="margin-left:15px;font-size:15px;font: bold">Model Year</span>
+            </div>
         </div>
 
         <div class="column middle">
-            <h2>Main Content</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
         </div>
 
 
