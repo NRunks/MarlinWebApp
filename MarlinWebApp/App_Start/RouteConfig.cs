@@ -24,6 +24,7 @@ namespace MarlinWebApp
                     url: "login",
                     defaults: new { controller = "Login", action = "Index" }
              );
+           
         }
     }
 }
