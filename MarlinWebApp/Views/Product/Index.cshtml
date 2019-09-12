@@ -1,0 +1,142 @@
+﻿
+
+@{
+    ViewBag.Title = "Load";
+}
+<link rel="stylesheet" href="~/Content/ProductList.css" />
+
+
+
+<div class="header-wrapper">
+    <img class="card-img-top" src="~/Content/Images/marlin.jpg" />
+    <input type="text" placeholder="Search..">
+    <button type="submit" class="searchButton"><b>Find</b></button>
+
+</div>
+
+<dl class="dl-horizontal">
+    <div class="row">
+        <div class="column side">
+            <div id="SearchSaveClear">
+                <span style="margin-left:10px;font-size:15px;color:grey">Search:</span>
+                <span class="SaveClearbutton">
+                    <input id="Save" type="button" value="Save" />
+                    <input id="Clear" type="button" value="Clear" />
+                </span>
+            </div>
+            <div id="ProductProject">
+                <input id="Product" type="button" value="Product" />
+                <input id="Project" type="button" value="Project" />
+            </div>
+            <div id="ProductType">
+                Product Type
+
+            </div>
+            <div id="ModelYear">
+                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Model Year:</span>
+                <input id="YearFrom" type="text" />-<input id="YearTo" type="text" />
+            </div>
+            <div id="TechSpec">
+                <span style="margin-left:5px;font-size:12px;color:black">Technology Specification</span>
+            </div>
+            <div id="TechSpecDetail">
+                <div class="Property">
+                    <span id="PropertyName">AirFlow(CFM)</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+                <div class="Property">
+                    <span id="PropertyName">MaxPower(W)</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+                <div class="Property">
+                    <span id="PropertyName">Sound at max speed(dBA)</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+                <div class="Property">
+                    <span id="PropertyName">Fan sweep diameter(in)</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+                <div class="Property">
+                    <span id="PropertyName">Fan sweep diameter(in)</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+            </div>
+            <div id="Brand">
+                Brand
+
+            </div>
+            <div id="PastSelection">
+                <div class="Property">
+                    <span id="PropertyName">Firm</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+                <div class="Property">
+                    <span id="PropertyName">Global</span> <br />
+                    <input class="PropertyFrom" type="text" />
+                    --------------
+                    <input class="PropertyTo" type="text" />
+                </div>
+
+            </div>
+            <div id="Certification">
+                Certification
+
+            </div>
+        </div>
+        <div class="column middle">
+            <div style="padding:10px">Mechanical > HCA Fan</div>
+            <div class="product">
+                <a href="">
+                    <img src="" class="product-image">
+                    <div class="product-title">
+                        Emerson Luray Eco Series CF860
+                    </div>
+                </a>
+                <div class="product-prorperty">
+                    8,500 CFM <br />
+                    33 W at max speed <br />
+                    40 dBAat max speed <br />
+                    60” fan sweep diameter<br />
+                </div>
+                <div class="pastspecifications">
+                    Past specifications:<br />
+                    10firm / 1492global
+                </div>
+
+            </div>
+            <div class="product">
+                <a href="">
+                    <img src="" class="product-image">
+                    <div class="product-title">
+                        Emerson Luray Eco Series CF860
+                    </div>
+                </a>
+                <div class="product-prorperty">
+                    8,500 CFM <br />
+                    33 W at max speed <br />
+                    40 dBAat max speed <br />
+                    60” fan sweep diameter<br />
+                </div>
+                <div class="pastspecifications">
+                    Past specifications:<br />
+                    10firm / 1492global
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+       
+</dl>

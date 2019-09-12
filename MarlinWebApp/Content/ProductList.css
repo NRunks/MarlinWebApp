@@ -44,12 +44,12 @@ column {
 
 .column.side {
     width: 15%;
-    
+   
     margin-left:0px;
 }
-#SearchSaveClear, #ProductProject, #ProductType, #ModelYear{
+#SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpec, #TechSpecDetail, #Brand, #PastSelection,#Certification {
     border: 1px solid grey;
-    border-top:1px solid white;
+    border-top: 1px solid white;
 }
 
 #SearchSaveClear {
@@ -60,7 +60,6 @@ column {
 
 .column.middle {
     width: 80%;
-    
    
 }
 .SaveClearbutton {
@@ -179,4 +178,51 @@ column {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+#YearFrom, #YearTo {
+    width: 20%;
+    height: 18px;
+    margin: 6px;
+}
+
+.PropertyFrom, .PropertyTo {
+    width: 15%;
+    height: 18px;
+    margin: 6px;
+    font-size:11px;
+}
+
+#PropertyName {
+    margin-left: 10px;
+    font-size: 15px;
+    color: dimgrey
+}
+
+/*This is for displaying the prodcut*/
+.product {
+    display: inline-block;
+    margin: 12px;
+    text-align: center;
+    width: 25%;
+    min-width: 175px;
+    border: 1px solid grey;
+}
+
+.product-image {
+    display: inline-block;
+    padding: 10px;
+    width: 29%;
+}
+.product-title{
+    font: bold 15px blue;
+}
+.product-prorperty {
+    background-color: darkgrey;
+    color: dimgrey;
+    font: 12px;
+}
+.pastspecifications{
+    font: 17px;
+    color: red;
 }
