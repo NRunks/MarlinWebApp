@@ -12,12 +12,12 @@ namespace MarlinApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class tblUser
+    public partial class tblManufacturer_tblProduct
     {
-        public int User_ID { get; set; }
-        public string User_Name { get; set; }
-        public string User_Email { get; set; }
-        public string User_Image { get; set; }
-        public string User_Password { get; set; }
+        public int Manufacturer_Id { get; set; }
+        public int Product_Id { get; set; }
+    
+        public virtual tblManufacturer_tblProduct tblManufacturer_tblProduct1 { get; set; }
+        public virtual tblManufacturer_tblProduct tblManufacturer_tblProduct2 { get; set; }
     }
 }

@@ -32,14 +32,13 @@ namespace MarlinApp.Data
         public string Series_Infro { get; set; }
         public Nullable<int> Document_ID { get; set; }
         public string Featured { get; set; }
-        public int Price { get; set; }
+        public Nullable<double> Price { get; set; }
         public string Brand { get; set; }
-        public int Screeen_Size { get; set; }
+        public string Screen_Size { get; set; }
         public string RAM { get; set; }
         public string Processor_Model { get; set; }
         public string Storage_Type { get; set; }
         public string Operating_System { get; set; }
-        public int Screen_Resolution { get; set; }
         public string Color { get; set; }
     
         public virtual tblDocument tblDocument { get; set; }

@@ -12,12 +12,12 @@ namespace MarlinApp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class tblUser
+    public partial class sysdiagram
     {
-        public int User_ID { get; set; }
-        public string User_Name { get; set; }
-        public string User_Email { get; set; }
-        public string User_Image { get; set; }
-        public string User_Password { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MarlinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MarlinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tblCategory">
           <Key>
             <PropertyRef Name="Category_ID" />
@@ -35,9 +45,15 @@
           </Key>
           <Property Name="Manufacturer_ID" Type="int" Nullable="false" />
           <Property Name="Manufacturer_Name" Type="varchar" MaxLength="255" />
-          <Property Name="Manufacturer_Department" Type="varchar" MaxLength="255" />
           <Property Name="Manufacturer_Web" Type="varchar" MaxLength="255" />
-          <Property Name="User_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblManufacturer_tblProduct">
+          <Key>
+            <PropertyRef Name="Manufacturer_Id" />
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Manufacturer_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblProduct">
           <Key>
@@ -55,15 +71,14 @@
           <Property Name="Series_Infro" Type="varchar" MaxLength="255" />
           <Property Name="Document_ID" Type="int" />
           <Property Name="Featured" Type="varchar" MaxLength="255" />
-          <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Brand" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Screeen_Size" Type="int" Nullable="false" />
-          <Property Name="RAM" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Processor_Model" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Storage_Type" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Operating_System" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Screen_Resolution" Type="int" Nullable="false" />
-          <Property Name="Color" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Brand" Type="varchar" MaxLength="255" />
+          <Property Name="Screen_Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="RAM" Type="varchar" MaxLength="255" />
+          <Property Name="Processor_Model" Type="varchar" MaxLength="255" />
+          <Property Name="Storage_Type" Type="varchar" MaxLength="255" />
+          <Property Name="Operating_System" Type="varchar" MaxLength="255" />
+          <Property Name="Color" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblProperty">
           <Key>
@@ -89,9 +104,8 @@
           </Key>
           <Property Name="Sales_ID" Type="int" Nullable="false" />
           <Property Name="Sales_Name" Type="varchar" MaxLength="255" />
-          <Property Name="Sales_Phone" Type="int" />
+          <Property Name="Sales_Phone" Type="varchar" MaxLength="255" />
           <Property Name="Sales_Email" Type="varchar" MaxLength="255" />
-          <Property Name="Sales_Web" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblSubCategory">
           <Key>
@@ -131,6 +145,20 @@
           <Property Name="User_Image" Type="varchar" MaxLength="255" />
           <Property Name="User_Password" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct">
+          <End Role="tblManufacturer_tblProduct" Type="Self.tblManufacturer_tblProduct" Multiplicity="1" />
+          <End Role="tblManufacturer_tblProduct1" Type="Self.tblManufacturer_tblProduct" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacturer_tblProduct">
+              <PropertyRef Name="Manufacturer_Id" />
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="tblManufacturer_tblProduct1">
+              <PropertyRef Name="Manufacturer_Id" />
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="tblDepartment_Manufacturer_ID_FK">
           <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
           <End Role="tblDepartment" Type="Self.tblDepartment" Multiplicity="*" />
@@ -140,18 +168,6 @@
             </Principal>
             <Dependent Role="tblDepartment">
               <PropertyRef Name="Manufacturer_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="tblManufacturer_User_ID_FK">
-          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
-          <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblUser">
-              <PropertyRef Name="User_ID" />
-            </Principal>
-            <Dependent Role="tblManufacturer">
-              <PropertyRef Name="User_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -288,10 +304,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MarlinModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDepartment" EntityType="Self.tblDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDocument" EntityType="Self.tblDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblManufacturer" EntityType="Self.tblManufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblManufacturer_tblProduct" EntityType="Self.tblManufacturer_tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProperty" EntityType="Self.tblProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPropertyValue" EntityType="Self.tblPropertyValue" Schema="dbo" store:Type="Tables" />
@@ -300,13 +318,13 @@
           <EntitySet Name="tblTechSpecFilter" EntityType="Self.tblTechSpecFilter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTypeFilter" EntityType="Self.tblTypeFilter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct" Association="Self.FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct">
+            <End Role="tblManufacturer_tblProduct" EntitySet="tblManufacturer_tblProduct" />
+            <End Role="tblManufacturer_tblProduct1" EntitySet="tblManufacturer_tblProduct" />
+          </AssociationSet>
           <AssociationSet Name="tblDepartment_Manufacturer_ID_FK" Association="Self.tblDepartment_Manufacturer_ID_FK">
             <End Role="tblManufacturer" EntitySet="tblManufacturer" />
             <End Role="tblDepartment" EntitySet="tblDepartment" />
-          </AssociationSet>
-          <AssociationSet Name="tblManufacturer_User_ID_FK" Association="Self.tblManufacturer_User_ID_FK">
-            <End Role="tblUser" EntitySet="tblUser" />
-            <End Role="tblManufacturer" EntitySet="tblManufacturer" />
           </AssociationSet>
           <AssociationSet Name="tblProduct_Document_ID_FK" Association="Self.tblProduct_Document_ID_FK">
             <End Role="tblDocument" EntitySet="tblDocument" />
@@ -353,10 +371,21 @@
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MarlinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="tblCategory">
           <Key>
             <PropertyRef Name="Category_ID" />
@@ -390,12 +419,19 @@
           </Key>
           <Property Name="Manufacturer_ID" Type="Int32" Nullable="false" />
           <Property Name="Manufacturer_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Manufacturer_Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Manufacturer_Web" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="User_ID" Type="Int32" />
           <NavigationProperty Name="tblDepartments" Relationship="Self.tblDepartment_Manufacturer_ID_FK" FromRole="tblManufacturer" ToRole="tblDepartment" />
-          <NavigationProperty Name="tblUser" Relationship="Self.tblManufacturer_User_ID_FK" FromRole="tblManufacturer" ToRole="tblUser" />
           <NavigationProperty Name="tblProducts" Relationship="Self.tblProduct_Manufacturer_ID_FK" FromRole="tblManufacturer" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblManufacturer_tblProduct">
+          <Key>
+            <PropertyRef Name="Manufacturer_Id" />
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Manufacturer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblManufacturer_tblProduct1" Relationship="Self.FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct" FromRole="tblManufacturer_tblProduct" ToRole="tblManufacturer_tblProduct1" />
+          <NavigationProperty Name="tblManufacturer_tblProduct2" Relationship="Self.FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct" FromRole="tblManufacturer_tblProduct1" ToRole="tblManufacturer_tblProduct" />
         </EntityType>
         <EntityType Name="tblProduct">
           <Key>
@@ -413,20 +449,19 @@
           <Property Name="Series_Infro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Document_ID" Type="Int32" />
           <Property Name="Featured" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Screen_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Processor_Model" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Storage_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Operating_System" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDocument" Relationship="Self.tblProduct_Document_ID_FK" FromRole="tblProduct" ToRole="tblDocument" />
           <NavigationProperty Name="tblManufacturer" Relationship="Self.tblProduct_Manufacturer_ID_FK" FromRole="tblProduct" ToRole="tblManufacturer" />
           <NavigationProperty Name="tblSale" Relationship="Self.tblProduct_Sales_ID_FK" FromRole="tblProduct" ToRole="tblSales" />
           <NavigationProperty Name="tblSubCategory" Relationship="Self.tblProduct_SubCategory_ID_FK" FromRole="tblProduct" ToRole="tblSubCategory" />
           <NavigationProperty Name="tblPropertyValues" Relationship="Self.tblPropertyValue_Product_ID_FK" FromRole="tblProduct" ToRole="tblPropertyValue" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Brand" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Screeen_Size" Type="Int32" Nullable="false" />
-          <Property Name="RAM" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Processor_Model" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Storage_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Operating_System" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Screen_Resolution" Type="Int32" Nullable="false" />
-          <Property Name="Color" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblProperty">
           <Key>
@@ -457,9 +492,8 @@
           </Key>
           <Property Name="Sales_ID" Type="Int32" Nullable="false" />
           <Property Name="Sales_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Sales_Phone" Type="Int32" />
+          <Property Name="Sales_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Sales_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Sales_Web" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblProducts" Relationship="Self.tblProduct_Sales_ID_FK" FromRole="tblSales" ToRole="tblProduct" />
         </EntityType>
         <EntityType Name="tblSubCategory">
@@ -507,7 +541,6 @@
           <Property Name="User_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="User_Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="User_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblManufacturers" Relationship="Self.tblManufacturer_User_ID_FK" FromRole="tblUser" ToRole="tblManufacturer" />
         </EntityType>
         <Association Name="tblSubCategory_Category_ID_FK">
           <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="0..1" />
@@ -545,18 +578,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="tblManufacturer_User_ID_FK">
-          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
-          <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblUser">
-              <PropertyRef Name="User_ID" />
-            </Principal>
-            <Dependent Role="tblManufacturer">
-              <PropertyRef Name="User_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="tblProduct_Manufacturer_ID_FK">
           <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
@@ -566,6 +587,20 @@
             </Principal>
             <Dependent Role="tblProduct">
               <PropertyRef Name="Manufacturer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct">
+          <End Role="tblManufacturer_tblProduct" Type="Self.tblManufacturer_tblProduct" Multiplicity="1" />
+          <End Role="tblManufacturer_tblProduct1" Type="Self.tblManufacturer_tblProduct" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacturer_tblProduct">
+              <PropertyRef Name="Manufacturer_Id" />
+              <PropertyRef Name="Product_Id" />
+            </Principal>
+            <Dependent Role="tblManufacturer_tblProduct1">
+              <PropertyRef Name="Manufacturer_Id" />
+              <PropertyRef Name="Product_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -666,10 +701,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MarlinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
           <EntitySet Name="tblDepartments" EntityType="Self.tblDepartment" />
           <EntitySet Name="tblDocuments" EntityType="Self.tblDocument" />
           <EntitySet Name="tblManufacturers" EntityType="Self.tblManufacturer" />
+          <EntitySet Name="tblManufacturer_tblProduct" EntityType="Self.tblManufacturer_tblProduct" />
           <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
           <EntitySet Name="tblProperties" EntityType="Self.tblProperty" />
           <EntitySet Name="tblPropertyValues" EntityType="Self.tblPropertyValue" />
@@ -690,13 +727,13 @@
             <End Role="tblDocument" EntitySet="tblDocuments" />
             <End Role="tblProduct" EntitySet="tblProducts" />
           </AssociationSet>
-          <AssociationSet Name="tblManufacturer_User_ID_FK" Association="Self.tblManufacturer_User_ID_FK">
-            <End Role="tblUser" EntitySet="tblUsers" />
-            <End Role="tblManufacturer" EntitySet="tblManufacturers" />
-          </AssociationSet>
           <AssociationSet Name="tblProduct_Manufacturer_ID_FK" Association="Self.tblProduct_Manufacturer_ID_FK">
             <End Role="tblManufacturer" EntitySet="tblManufacturers" />
             <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct" Association="Self.FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct">
+            <End Role="tblManufacturer_tblProduct" EntitySet="tblManufacturer_tblProduct" />
+            <End Role="tblManufacturer_tblProduct1" EntitySet="tblManufacturer_tblProduct" />
           </AssociationSet>
           <AssociationSet Name="tblProduct_Sales_ID_FK" Association="Self.tblProduct_Sales_ID_FK">
             <End Role="tblSales" EntitySet="tblSales" />
@@ -737,6 +774,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MarlinModelStoreContainer" CdmEntityContainer="MarlinEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MarlinModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblCategories">
             <EntityTypeMapping TypeName="MarlinModel.tblCategory">
               <MappingFragment StoreEntitySet="tblCategory">
@@ -769,24 +817,21 @@
               <MappingFragment StoreEntitySet="tblManufacturer">
                 <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
                 <ScalarProperty Name="Manufacturer_Name" ColumnName="Manufacturer_Name" />
-                <ScalarProperty Name="Manufacturer_Department" ColumnName="Manufacturer_Department" />
                 <ScalarProperty Name="Manufacturer_Web" ColumnName="Manufacturer_Web" />
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManufacturer_tblProduct">
+            <EntityTypeMapping TypeName="MarlinModel.tblManufacturer_tblProduct">
+              <MappingFragment StoreEntitySet="tblManufacturer_tblProduct">
+                <ScalarProperty Name="Manufacturer_Id" ColumnName="Manufacturer_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProducts">
             <EntityTypeMapping TypeName="MarlinModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProduct">
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Screen_Resolution" ColumnName="Screen_Resolution" />
-                <ScalarProperty Name="Operating_System" ColumnName="Operating_System" />
-                <ScalarProperty Name="Storage_Type" ColumnName="Storage_Type" />
-                <ScalarProperty Name="Processor_Model" ColumnName="Processor_Model" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="Screeen_Size" ColumnName="Screeen_Size" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
                 <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
                 <ScalarProperty Name="Sales_ID" ColumnName="Sales_ID" />
@@ -799,6 +844,14 @@
                 <ScalarProperty Name="Series_Infro" ColumnName="Series_Infro" />
                 <ScalarProperty Name="Document_ID" ColumnName="Document_ID" />
                 <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Screen_Size" ColumnName="Screen_Size" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="Processor_Model" ColumnName="Processor_Model" />
+                <ScalarProperty Name="Storage_Type" ColumnName="Storage_Type" />
+                <ScalarProperty Name="Operating_System" ColumnName="Operating_System" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -828,7 +881,6 @@
                 <ScalarProperty Name="Sales_Name" ColumnName="Sales_Name" />
                 <ScalarProperty Name="Sales_Phone" ColumnName="Sales_Phone" />
                 <ScalarProperty Name="Sales_Email" ColumnName="Sales_Email" />
-                <ScalarProperty Name="Sales_Web" ColumnName="Sales_Web" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

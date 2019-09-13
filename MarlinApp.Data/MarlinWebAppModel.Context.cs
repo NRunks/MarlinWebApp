@@ -25,10 +25,12 @@ namespace MarlinApp.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblCategory> tblCategories { get; set; }
         public virtual DbSet<tblDepartment> tblDepartments { get; set; }
         public virtual DbSet<tblDocument> tblDocuments { get; set; }
         public virtual DbSet<tblManufacturer> tblManufacturers { get; set; }
+        public virtual DbSet<tblManufacturer_tblProduct> tblManufacturer_tblProduct { get; set; }
         public virtual DbSet<tblProduct> tblProducts { get; set; }
         public virtual DbSet<tblProperty> tblProperties { get; set; }
         public virtual DbSet<tblPropertyValue> tblPropertyValues { get; set; }

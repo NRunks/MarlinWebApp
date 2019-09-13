@@ -9,8 +9,9 @@ namespace MarlinWebApp.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Load()
-        {
+        [HttpGet]
+        public ActionResult Index()
+        {        
             return View();
         }
     }

@@ -22,9 +22,8 @@ namespace MarlinApp.Data
     
         public int Sales_ID { get; set; }
         public string Sales_Name { get; set; }
-        public Nullable<int> Sales_Phone { get; set; }
+        public string Sales_Phone { get; set; }
         public string Sales_Email { get; set; }
-        public string Sales_Web { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct> tblProducts { get; set; }

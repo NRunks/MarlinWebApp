@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -50,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities.cs" />
-    <Compile Include="EntityMap.cs" />
     <Compile Include="MarlinWebAppModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +67,9 @@
       <DependentUpon>MarlinWebAppModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblCategory.cs">
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
@@ -78,6 +80,9 @@
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblManufacturer.cs">
+      <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManufacturer_tblProduct.cs">
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProduct.cs">
@@ -117,6 +122,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MarlinWebAppModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MarlinWebAppModel.edmx</DependentUpon>
@@ -127,9 +135,6 @@
       <DependentUpon>MarlinWebAppModel.edmx</DependentUpon>
       <LastGenOutput>MarlinWebAppModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,9 +23,19 @@ namespace MarlinWebApp.Repo
             this.context.tblProducts.Remove(product);
         }
 
-        public tblManufacturer GetProductByManufacturerID(int manufacturerID)
+        public tblManufacturer GetManufacturerByID(int manufacturerID)
         {
             return this.context.tblManufacturers.Find(manufacturerID);
+        }
+
+        public tblManufacturer_tblProduct GetManufacturerAndProductByManufacturerID(int manufacturerID)
+        {
+            return this.context.tblManufacturer_tblProduct.Find(manufacturerID);
+        }
+
+        public tblManufacturer_tblProduct GetManufacturerAndProductByProductID(int productID)
+        {
+            return this.context.tblManufacturer_tblProduct.Find(productID);
         }
 
         public tblProduct GetProductByID(int productId)

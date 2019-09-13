@@ -134,3 +134,8 @@ a.custom-anchor {
         color: rgb(0,115,230);
         transform: scale(.9);
     }
+
+img.search-bar-user-logo {
+    width:48px;
+    height: 48px;
+}
