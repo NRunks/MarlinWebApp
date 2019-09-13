@@ -10,9 +10,9 @@ namespace MarlinWebApp.Repo
 {
     public class MarlinRepository : IStoreRepository, IDisposable
     {
-        private MarlinAppEntities context;
+        private MarlinEntities3 context;
 
-        public MarlinRepository(MarlinAppEntities context)
+        public MarlinRepository(MarlinEntities3 context)
         {
             this.context = context;
         }

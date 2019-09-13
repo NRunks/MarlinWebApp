@@ -13,10 +13,10 @@ namespace MarlinApp.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MarlinAppEntities : DbContext
+    public partial class MarlinEntities3 : DbContext
     {
-        public MarlinAppEntities()
-            : base("name=MarlinAppEntities")
+        public MarlinEntities3()
+            : base("name=MarlinEntities3")
         {
         }
     
@@ -34,7 +34,6 @@ namespace MarlinApp.Data
         public virtual DbSet<tblProduct> tblProducts { get; set; }
         public virtual DbSet<tblProperty> tblProperties { get; set; }
         public virtual DbSet<tblPropertyValue> tblPropertyValues { get; set; }
-        public virtual DbSet<tblSale> tblSales { get; set; }
         public virtual DbSet<tblSubCategory> tblSubCategories { get; set; }
         public virtual DbSet<tblTechSpecFilter> tblTechSpecFilters { get; set; }
         public virtual DbSet<tblTypeFilter> tblTypeFilters { get; set; }
