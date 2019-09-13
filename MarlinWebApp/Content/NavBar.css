@@ -1,0 +1,23 @@
+﻿div#navbar-container
+{ width: 100%;
+  height: 15vh;
+  background: red;
+}
+
+.user-logo-container {
+    background-color: white;
+}
+
+img.logo {
+    width: 48px;
+    height: 48px;
+}
+
+img.search-bar-marlin-logo {
+    width: 48px;
+    height: 48px;
+}
+
+div#navbar-container > div.user-logo-container {
+    background: white;
+}
