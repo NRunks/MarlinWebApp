@@ -4,7 +4,9 @@
     ViewBag.Title = "Load";
 }
 <link rel="stylesheet" href="~/Content/ProductList.css" />
-
+<link rel="stylesheet" href="~/Scripts/bootstrap.min.js" />
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/script.js"></script>
 
 
 <div class="header-wrapper">
@@ -31,7 +33,138 @@
             </div>
             <div id="ProductType">
                 Product Type
+                <button type="button" class="" data-toggle="modal" data-target="#myModal" style="float:right;height:23px">Search</button>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
 
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
+                                <div class="modal-title">Find fans</div>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Type</div>
+                            <div class="modal-body">
+                                <div class="column side" style="width:25%;float:left">
+                                    <label>Use Type</label> <br />
+                                    <label>Application</label><br />
+                                    <label>Mounting </label><br />
+                                    <label>Accessories</label><br />
+                                    <label>Model year</label>
+                                </div>
+                                <div class="column middle" style="width:65%; float:right">
+                                    <label>
+                                        <span>
+                                            Commercial
+                                            <input type="radio" checked="checked" name="radio1">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Industrial
+                                            <input type="radio" checked="checked" name="radio1">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Residental
+                                            <input type="radio" checked="checked" name="radio1">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span>
+                                            Indoor
+                                            <input type="radio" checked="checked" name="radio2">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Outdoor
+                                            <input type="radio" checked="checked" name="radio2">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span>
+                                            Roof
+                                            <input type="radio" checked="checked" name="radio3">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Wall
+                                            <input type="radio" checked="checked" name="radio3">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Free Standing
+                                            <input type="radio" checked="checked" name="radio3">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span>
+                                            With Light
+                                            <input type="radio" checked="checked" name="radio4">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <span>
+                                            Without light
+                                            <input type="radio" checked="checked" name="radio4">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span class="range-container">
+                                            <input type="text" id="number"  value="0" />
+                                            <button onclick="reduceValue(this)" value="down">&#8249</button>
+                                            <button onclick="increaseValue(this)" value="up">&#8250</button>
+                                        </span>
+                                        -
+                                        <span class="range-container">
+                                            <input type="text" id="number"  value="0" />
+                                            <button onclick="reduceValue(this)" value="down">&#8249 </button>
+                                            <button onclick="increaseValue(this)" value="up">&#8250</button>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Technical Details</div>
+                            <div class="modal-body">
+                                <div class="column side" style="width:25%;float:left">
+                                    <label>Use Type</label> <br />
+                                    <label>Application</label><br />
+                                    <label>Mounting </label><br />
+                                    <label>Accessories</label><br />
+                                    <label>Model year</label>
+                                </div>
+                                <div class="column middle" style="width:65%; float:right">
+                                </div>
+                            </div>
+                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Brand</div>
+                            <div class="brand">
+                                Select Brands
+                                <input list="brand" type="text">
+                                <datalist id="brand">
+                                    <option value="Columbia Company"></option>
+                                    <option value="Laars"></option>
+                                    <option value="Hurst & Welding Company, Inc"></option>
+                                </datalist>
+                            </div>
+                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey;">Others</div>
+                            <div class="brand">
+                                With the words
+                                <input list="brand" type="text">
+                                <datalist id="brand">
+                                   
+                                </datalist>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" >Search</button>
+                            </div>
+
+
+                        </div>
+
+                        </div>
+                </div>
             </div>
             <div id="ModelYear">
                 <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Model Year:</span>
@@ -139,5 +272,5 @@
         </div>
     </div>
 
-       
+
 </dl>
