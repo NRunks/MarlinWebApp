@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div style="font-family:Arial;text-align:center;position:center">
+
+        <img src="~/Content/Images/marlin.jpg" alt="Alternate Text" width="200" />
+        <br /> <br />
+        <h4>Building Product Selection Platform</h4>
+
+
+        <div class="input-group" style="width:1000px">
+            <div class="input-group-append" id="button-addon4">
+                <select class="searchElement" id="StudentGender" name="Category" style="width:200px">
+                    <option>Category</option>
+                    <option>Furniture</option>
+                    <option>Electrical</option>
+                </select>
+            </div>
+            <input type="text" class="form-control" aria-describedby="button-addon4">
+            <div class="input-group-append" id="button-addon4">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+        </div>
+
+    </div>
+
