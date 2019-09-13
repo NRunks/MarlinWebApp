@@ -22,7 +22,6 @@ namespace MarlinApp.Data
     
         public int Product_ID { get; set; }
         public Nullable<int> Manufacturer_ID { get; set; }
-        public Nullable<int> Sales_ID { get; set; }
         public Nullable<int> SubCategory_ID { get; set; }
         public string Product_Name { get; set; }
         public string Product_Image { get; set; }
@@ -40,10 +39,10 @@ namespace MarlinApp.Data
         public string Storage_Type { get; set; }
         public string Operating_System { get; set; }
         public string Color { get; set; }
+        public string Storage_Space { get; set; }
     
         public virtual tblDocument tblDocument { get; set; }
         public virtual tblManufacturer tblManufacturer { get; set; }
-        public virtual tblSale tblSale { get; set; }
         public virtual tblSubCategory tblSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }

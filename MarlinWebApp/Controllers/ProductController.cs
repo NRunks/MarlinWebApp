@@ -14,7 +14,7 @@ namespace MarlinWebApp.Controllers
 
         public ProductController()
         {
-            this.repository = new MarlinRepository(new MarlinAppEntities());
+            this.repository = new MarlinRepository(new MarlinEntities3());
         }
 
         public ProductController(MarlinRepository repository)

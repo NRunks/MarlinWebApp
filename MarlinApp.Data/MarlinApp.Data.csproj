@@ -94,9 +94,6 @@
     <Compile Include="tblPropertyValue.cs">
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblSale.cs">
-      <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblSubCategory.cs">
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
@@ -111,7 +108,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="MarlinWebAppModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MarlinWebAppModel.Designer.cs</LastGenOutput>

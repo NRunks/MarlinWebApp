@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MarlinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MarlinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -61,7 +61,6 @@
           </Key>
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="Manufacturer_ID" Type="int" />
-          <Property Name="Sales_ID" Type="int" />
           <Property Name="SubCategory_ID" Type="int" />
           <Property Name="Product_Name" Type="varchar" MaxLength="255" />
           <Property Name="Product_Image" Type="varchar" MaxLength="255" />
@@ -79,6 +78,7 @@
           <Property Name="Storage_Type" Type="varchar" MaxLength="255" />
           <Property Name="Operating_System" Type="varchar" MaxLength="255" />
           <Property Name="Color" Type="varchar" MaxLength="255" />
+          <Property Name="Storage_Space" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblProperty">
           <Key>
@@ -97,15 +97,6 @@
           <Property Name="Property_ID" Type="int" Nullable="false" />
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="value" Type="int" />
-        </EntityType>
-        <EntityType Name="tblSales">
-          <Key>
-            <PropertyRef Name="Sales_ID" />
-          </Key>
-          <Property Name="Sales_ID" Type="int" Nullable="false" />
-          <Property Name="Sales_Name" Type="varchar" MaxLength="255" />
-          <Property Name="Sales_Phone" Type="varchar" MaxLength="255" />
-          <Property Name="Sales_Email" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tblSubCategory">
           <Key>
@@ -191,18 +182,6 @@
             </Principal>
             <Dependent Role="tblProduct">
               <PropertyRef Name="Manufacturer_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="tblProduct_Sales_ID_FK">
-          <End Role="tblSales" Type="Self.tblSales" Multiplicity="0..1" />
-          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblSales">
-              <PropertyRef Name="Sales_ID" />
-            </Principal>
-            <Dependent Role="tblProduct">
-              <PropertyRef Name="Sales_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -312,7 +291,6 @@
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProperty" EntityType="Self.tblProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPropertyValue" EntityType="Self.tblPropertyValue" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblSales" EntityType="Self.tblSales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSubCategory" EntityType="Self.tblSubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTechSpecFilter" EntityType="Self.tblTechSpecFilter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTypeFilter" EntityType="Self.tblTypeFilter" Schema="dbo" store:Type="Tables" />
@@ -331,10 +309,6 @@
           </AssociationSet>
           <AssociationSet Name="tblProduct_Manufacturer_ID_FK" Association="Self.tblProduct_Manufacturer_ID_FK">
             <End Role="tblManufacturer" EntitySet="tblManufacturer" />
-            <End Role="tblProduct" EntitySet="tblProduct" />
-          </AssociationSet>
-          <AssociationSet Name="tblProduct_Sales_ID_FK" Association="Self.tblProduct_Sales_ID_FK">
-            <End Role="tblSales" EntitySet="tblSales" />
             <End Role="tblProduct" EntitySet="tblProduct" />
           </AssociationSet>
           <AssociationSet Name="tblProduct_SubCategory_ID_FK" Association="Self.tblProduct_SubCategory_ID_FK">
@@ -370,8 +344,7 @@
             <End Role="tblTypeFilter" EntitySet="tblTypeFilter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MarlinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -438,7 +411,6 @@
           </Key>
           <Property Name="Product_ID" Type="Int32" Nullable="false" />
           <Property Name="Manufacturer_ID" Type="Int32" />
-          <Property Name="Sales_ID" Type="Int32" />
           <Property Name="SubCategory_ID" Type="Int32" />
           <Property Name="Product_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Product_Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -456,9 +428,9 @@
           <Property Name="Storage_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Operating_System" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Color" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Storage_Space" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDocument" Relationship="Self.tblProduct_Document_ID_FK" FromRole="tblProduct" ToRole="tblDocument" />
           <NavigationProperty Name="tblManufacturer" Relationship="Self.tblProduct_Manufacturer_ID_FK" FromRole="tblProduct" ToRole="tblManufacturer" />
-          <NavigationProperty Name="tblSale" Relationship="Self.tblProduct_Sales_ID_FK" FromRole="tblProduct" ToRole="tblSales" />
           <NavigationProperty Name="tblSubCategory" Relationship="Self.tblProduct_SubCategory_ID_FK" FromRole="tblProduct" ToRole="tblSubCategory" />
           <NavigationProperty Name="tblPropertyValues" Relationship="Self.tblPropertyValue_Product_ID_FK" FromRole="tblProduct" ToRole="tblPropertyValue" />
         </EntityType>
@@ -484,16 +456,6 @@
           <Property Name="value" Type="Int32" />
           <NavigationProperty Name="tblProduct" Relationship="Self.tblPropertyValue_Product_ID_FK" FromRole="tblPropertyValue" ToRole="tblProduct" />
           <NavigationProperty Name="tblProperty" Relationship="Self.tblPropertyValue_Property_ID_FK" FromRole="tblPropertyValue" ToRole="tblProperty" />
-        </EntityType>
-        <EntityType Name="tblSale">
-          <Key>
-            <PropertyRef Name="Sales_ID" />
-          </Key>
-          <Property Name="Sales_ID" Type="Int32" Nullable="false" />
-          <Property Name="Sales_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Sales_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Sales_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProducts" Relationship="Self.tblProduct_Sales_ID_FK" FromRole="tblSales" ToRole="tblProduct" />
         </EntityType>
         <EntityType Name="tblSubCategory">
           <Key>
@@ -602,18 +564,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="tblProduct_Sales_ID_FK">
-          <End Role="tblSales" Type="Self.tblSale" Multiplicity="0..1" />
-          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblSales">
-              <PropertyRef Name="Sales_ID" />
-            </Principal>
-            <Dependent Role="tblProduct">
-              <PropertyRef Name="Sales_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="tblProduct_SubCategory_ID_FK">
           <End Role="tblSubCategory" Type="Self.tblSubCategory" Multiplicity="0..1" />
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
@@ -698,7 +648,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarlinAppEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MarlinEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
           <EntitySet Name="tblDepartments" EntityType="Self.tblDepartment" />
@@ -708,7 +658,6 @@
           <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
           <EntitySet Name="tblProperties" EntityType="Self.tblProperty" />
           <EntitySet Name="tblPropertyValues" EntityType="Self.tblPropertyValue" />
-          <EntitySet Name="tblSales" EntityType="Self.tblSale" />
           <EntitySet Name="tblSubCategories" EntityType="Self.tblSubCategory" />
           <EntitySet Name="tblTechSpecFilters" EntityType="Self.tblTechSpecFilter" />
           <EntitySet Name="tblTypeFilters" EntityType="Self.tblTypeFilter" />
@@ -732,10 +681,6 @@
           <AssociationSet Name="FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct" Association="Self.FK_tblManufacturer_tblProduct_tblManufacturer_tblProduct">
             <End Role="tblManufacturer_tblProduct" EntitySet="tblManufacturer_tblProduct" />
             <End Role="tblManufacturer_tblProduct1" EntitySet="tblManufacturer_tblProduct" />
-          </AssociationSet>
-          <AssociationSet Name="tblProduct_Sales_ID_FK" Association="Self.tblProduct_Sales_ID_FK">
-            <End Role="tblSales" EntitySet="tblSales" />
-            <End Role="tblProduct" EntitySet="tblProducts" />
           </AssociationSet>
           <AssociationSet Name="tblProduct_SubCategory_ID_FK" Association="Self.tblProduct_SubCategory_ID_FK">
             <End Role="tblSubCategory" EntitySet="tblSubCategories" />
@@ -771,7 +716,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MarlinModelStoreContainer" CdmEntityContainer="MarlinAppEntities">
+        <EntityContainerMapping StorageEntityContainer="MarlinModelStoreContainer" CdmEntityContainer="MarlinEntities3">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MarlinModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -832,7 +777,6 @@
               <MappingFragment StoreEntitySet="tblProduct">
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
                 <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
-                <ScalarProperty Name="Sales_ID" ColumnName="Sales_ID" />
                 <ScalarProperty Name="SubCategory_ID" ColumnName="SubCategory_ID" />
                 <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
                 <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
@@ -850,6 +794,7 @@
                 <ScalarProperty Name="Storage_Type" ColumnName="Storage_Type" />
                 <ScalarProperty Name="Operating_System" ColumnName="Operating_System" />
                 <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Storage_Space" ColumnName="Storage_Space" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -869,16 +814,6 @@
                 <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
                 <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
                 <ScalarProperty Name="value" ColumnName="value" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblSales">
-            <EntityTypeMapping TypeName="MarlinModel.tblSale">
-              <MappingFragment StoreEntitySet="tblSales">
-                <ScalarProperty Name="Sales_ID" ColumnName="Sales_ID" />
-                <ScalarProperty Name="Sales_Name" ColumnName="Sales_Name" />
-                <ScalarProperty Name="Sales_Phone" ColumnName="Sales_Phone" />
-                <ScalarProperty Name="Sales_Email" ColumnName="Sales_Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
