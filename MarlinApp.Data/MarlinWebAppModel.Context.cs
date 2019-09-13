@@ -13,10 +13,10 @@ namespace MarlinApp.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MarlinEntities : DbContext
+    public partial class MarlinAppEntities : DbContext
     {
-        public MarlinEntities()
-            : base("name=MarlinEntities")
+        public MarlinAppEntities()
+            : base("name=MarlinAppEntities")
         {
         }
     

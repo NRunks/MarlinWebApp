@@ -9,7 +9,7 @@ namespace MarlinWebApp.Repo
 {
     public interface IStoreRepository : IDisposable
     {
-        tblUser GetUserByID(int userId);
+        tblUser GetUserByName(string username);
         IEnumerable<tblProduct> GetProducts();
         tblProduct GetProductByID(int productId);
         tblManufacturer GetManufacturerByID(int manufacturerID);

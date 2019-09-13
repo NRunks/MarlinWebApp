@@ -135,6 +135,10 @@ a.custom-anchor {
         transform: scale(.9);
     }
 
+.error-message {
+    color: #ff0033;
+}
+
 img.search-bar-user-logo {
     width:48px;
     height: 48px;

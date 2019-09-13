@@ -8,11 +8,11 @@ using MarlinApp.Data;
 
 namespace MarlinWebApp.Repo
 {
-    class MarlinRepository : IStoreRepository, IDisposable
+    public class MarlinRepository : IStoreRepository, IDisposable
     {
-        private MarlinEntities context;
+        private MarlinAppEntities context;
 
-        public MarlinRepository(MarlinEntities context)
+        public MarlinRepository(MarlinAppEntities context)
         {
             this.context = context;
         }
@@ -48,9 +48,9 @@ namespace MarlinWebApp.Repo
             return this.context.tblProducts.ToList();
         }
 
-        public tblUser GetUserByID(int userId)
+        public tblUser GetUserByName(string username)
         {
-            return this.context.tblUsers.Find(userId);
+            return this.context.tblUsers.Find(username);
         }
 
         public void InsertProducts(List<tblProduct> products)
