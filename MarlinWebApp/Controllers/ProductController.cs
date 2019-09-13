@@ -13,5 +13,21 @@ namespace MarlinWebApp.Controllers
         {
             return View();
         }
+        public ActionResult ProductSummary()
+        {
+            return View();
+        }
+        public ActionResult ProductDetails()
+        {
+            return View();
+        }
+        public ActionResult ProductDocumentation()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

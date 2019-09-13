@@ -33,8 +33,9 @@
     width: 115px;
     height: 89px;
 }
-.row{
-    
+
+/*page divide*/
+.row {
     background-color: white;
 }
 column {
@@ -44,8 +45,9 @@ column {
 
 .column.side {
     width: 15%;
-   
-    margin-left:0px;
+}
+.column.middle {
+    width: 80%;
 }
 #SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpec, #TechSpecDetail, #Brand, #PastSelection,#Certification {
     border: 1px solid grey;
@@ -58,10 +60,7 @@ column {
    
 }
 
-.column.middle {
-    width: 80%;
-   
-}
+
 .SaveClearbutton {
     margin-left: 20px;
 }

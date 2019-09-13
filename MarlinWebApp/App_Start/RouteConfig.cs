@@ -24,7 +24,17 @@ namespace MarlinWebApp
                     url: "login",
                     defaults: new { controller = "Login", action = "Index" }
              );
-           
+            routes.MapRoute(
+                   name: "product",
+                   url: "product",
+                   defaults: new { controller = "Product", action = "Index" }
+            );
+            routes.MapRoute(
+               name: "ProductPage",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Product", action = "Show", id = UrlParameter.Optional }
+           );
+
         }
     }
 }
