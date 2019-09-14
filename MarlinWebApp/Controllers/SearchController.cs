@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MarlinApp.Data;
+using MarlinWebApp.Repo;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,23 @@ namespace MarlinWebApp.Controllers
 {
     public class SearchController : Controller
     {
-        // GET: Search
+        public MarlinRepository repository;
+
+        public SearchController()
+        {
+            this.repository = new MarlinRepository(new MarlinEntities3());
+        }
+
+        public SearchController(MarlinRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
+            List<tblCategory> categories = new List<tblCategory>(this.repository.GetAllCategories().ToList());
+            ViewData["Categories"] = categories;
             return View();
         }
     }
