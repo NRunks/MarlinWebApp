@@ -58,6 +58,16 @@ namespace MarlinWebApp.Repo
             return this.context.tblCategories.ToList();
         }
 
+        public IEnumerable<tblSubCategory> GetSubCategoriesByCategoryName(string categoryName)
+        {
+            var query = this.context.tblCategories.First(c => c.Category_Name.Equals(categoryName));
+            if (query != null)
+            {
+                return (from s in this.context.tblSubCategories where s.Category_ID == query.Category_ID select s).ToList();
+            }
+            else return null;
+        }
+
         public void InsertProducts(List<tblProduct> products)
         {
             this.context.tblProducts.AddRange(products);

@@ -32,32 +32,14 @@ namespace MarlinWebApp.Controllers
         public ActionResult Index(string username, string password)
         {
             tblUser user = repository.GetUserByName(username);
-            if (user != null && password.Equals(user.User_Password))
-            {
-
-            } else
+            if (user == null || !password.Equals(user.User_Password))
             {
                 ViewBag.errorMessage = "The username or password you have entered is invalid.";
                 return View("Index");
-            }
-            return Content($"Hello {user.User_Id}, {user.User_Password}"); ;
-            /*var _admin = db.Admins.Where(s => s.Email == admin.Email);
-            if (_admin.Any())
+            } else
             {
-                if (_admin.Where(s => s.Password == admin.Password).Any())
-                {
-
-                    return Json(new { status = true, message = "Login Successfull!" });
-                }
-                else
-                {
-                    return Json(new { status = false, message = "Invalid Password!" });
-                }
+                return RedirectToAction("Index", "Search");
             }
-            else
-            {
-                return Json(new { status = false, message = "Invalid Email!" });
-            }*/
         }
     }
 }

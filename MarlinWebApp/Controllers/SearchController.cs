@@ -24,11 +24,28 @@ namespace MarlinWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string category, string subcategory)
         {
             List<tblCategory> categories = new List<tblCategory>(this.repository.GetAllCategories().ToList());
             ViewData["Categories"] = categories;
+            if (category != null && category != String.Empty)
+            {
+                ViewBag.Category = category;
+                List<tblSubCategory> subCategories = new List<tblSubCategory>(this.repository.GetSubCategoriesByCategoryName(category).ToList());
+                ViewData["SubCategories"] = subCategories;
+
+                if (subcategory != null && subcategory != String.Empty)
+                {
+                    ViewBag.SubCategory = subcategory;
+                }
+            }
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Product");
         }
     }
 }
