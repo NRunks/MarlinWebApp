@@ -17,4 +17,3 @@
     $(".PropertyFrom").val($("#slider-range").slider("values", 0));
     $(".PropertyTo").val($("#slider-range").slider("values", 1));
 }; */
-

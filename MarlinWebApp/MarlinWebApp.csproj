@@ -186,6 +186,7 @@
     <Content Include="Views\Product\Contact.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Product\_TopBar.cshtml" />
+    <Content Include="Views\Product\Compare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

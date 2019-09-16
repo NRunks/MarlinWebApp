@@ -220,7 +220,11 @@ column {
     min-width: 175px;
     border: 1px solid grey;
 }
-
+product-compare-image {
+    width: 180px;
+    height: 120px;
+    border: 0.5px solid grey;
+}
 .product-image {
     display: inline-block;
     padding: 10px;

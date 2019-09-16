@@ -116,4 +116,39 @@
 .result {
     width: 48%;
 }
+#compare-table {
+    margin-left: 30px;
+    font-size: 13px;
+    font-style: normal;
+    border-collapse: collapse;
+}
+#compare-table td:nth-child(1) {
+    background-color: #d9d9d9;
+}
+#compare-table th:nth-child(n+2) {
+    font-weight: 100;
+    text-align: center;
+}
+#compare-table td {
+    border: 2px solid #e6e6e6;
 
+}
+#compare-table th {
+    border: 2px solid #e6e6e6;
+}
+
+#detail-table {
+    margin-left: 10px;
+    font-size: 13px;
+    font-style: normal;
+    border-collapse: collapse;
+}
+#detail-table th{
+    width:1255px;
+}
+#detail-table tr:nth-child(odd) {
+    background-color:#f2f2f2;
+}
+
+#detail-table tr:nth-child(even) {
+}
