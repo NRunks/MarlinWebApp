@@ -18,3 +18,14 @@
     $(".PropertyTo").val($("#slider-range").slider("values", 1));
 }; */
 
+$('#categorySelect').on("change", function (ev) {
+    console.log(ev);
+    window.location = "/Search/Index?category=" + this.value;
+});
+
+$('#subCategorySelect').on("change", function (ev) {
+    console.log(ev);
+    window.location = window.location.href.split("&subcategory=")[0] + '&subcategory=' + this.value;
+    $("#search-input").prop("disabled", false);
+});
+

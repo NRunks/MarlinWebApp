@@ -24,7 +24,16 @@ namespace MarlinWebApp.Controllers
         // GET: Product
         [HttpGet]
         public ActionResult Index()
-        {        
+        {
+            string category = Request.QueryString["category"];
+            string subcategory = Request.QueryString["subcategory"];
+            string search = Request.QueryString["search"];
+            ViewData["Category"] = category;
+            ViewData["SubCategory"] = subcategory;
+            ViewData["Search"] = search;
+            if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty) || (search == null || search == String.Empty)) {
+                //return RedirectToRoute("Invalid");  <----- Remember to uncomment
+            }
             return View();
         }
         public ActionResult ProductSummary()

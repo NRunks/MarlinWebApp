@@ -26,6 +26,7 @@ namespace MarlinWebApp.Controllers
         [HttpGet]
         public ActionResult Index(string category, string subcategory)
         {
+
             List<tblCategory> categories = new List<tblCategory>(this.repository.GetAllCategories().ToList());
             ViewData["Categories"] = categories;
             if (category != null && category != String.Empty)
@@ -43,9 +44,14 @@ namespace MarlinWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index()
+        public ActionResult Index(string category, string subcategory, string search)
         {
-            return RedirectToAction("Index", "Product");
+            return RedirectToRoute("Product", new
+            {
+                category = category,
+                subcategory = subcategory,
+                search = search
+            });
         }
     }
 }
