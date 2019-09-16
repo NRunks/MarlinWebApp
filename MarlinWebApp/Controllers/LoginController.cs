@@ -14,7 +14,7 @@ namespace MarlinWebApp.Controllers
 
         public LoginController()
         {
-            repository = new MarlinRepository(new MarlinApp.Data.MarlinAppEntities());
+            repository = new MarlinRepository(new MarlinApp.Data.MarlinEntities3());
         }
 
         public LoginController(MarlinRepository repository)
