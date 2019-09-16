@@ -4,17 +4,17 @@
     display: flex;
     flex-direction: column;
     margin: 0;
+    padding: 0px;
 }
 
 body {
     padding-top: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
     margin: 0;
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(170deg, rgb(0,115,230),rgb(180,225,230), rgba(180,225,230,0));
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 footer {
@@ -141,5 +141,10 @@ a.custom-anchor {
 
 img.search-bar-user-logo {
     width:48px;
+    height: 48px;
+}
+
+img#top-bar-logo {
+    width: 48px;
     height: 48px;
 }
