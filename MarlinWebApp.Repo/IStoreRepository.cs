@@ -10,11 +10,13 @@ namespace MarlinWebApp.Repo
     public interface IStoreRepository : IDisposable
     {
         tblUser GetUserByName(string username);
-        IEnumerable<tblProduct> GetProducts();
+        IEnumerable<tblProduct> GetAllProducts();
         tblProduct GetProductByID(int productId);
         tblManufacturer GetManufacturerByID(int manufacturerID);
         tblManufacturer_tblProduct GetManufacturerAndProductByManufacturerID(int manufacturerID);
         tblManufacturer_tblProduct GetManufacturerAndProductByProductID(int productID);
+        IEnumerable<tblCategory> GetAllCategories();
+        IEnumerable<tblSubCategory> GetSubCategoriesByCategoryName(string categoryName);
         void InsertProducts(List<tblProduct> products);
         void DeleteProduct(int productID);
         void UpdateProduct(tblProduct product);

@@ -20,6 +20,12 @@ namespace MarlinWebApp
             );
 
             routes.MapRoute(
+                name: "search",
+                url: "{controller}/{action}/{category}/{subcategory}",
+                new { controller = "Search", action = "Category", category = "", subcategory = "" }
+            );
+
+            routes.MapRoute(
                     name: "login",
                     url: "login",
                     defaults: new { controller = "Login", action = "Index" }

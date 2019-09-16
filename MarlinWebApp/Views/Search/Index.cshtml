@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var categories = (List<MarlinApp.Data.tblCategory>)ViewData["Categories"];
+    var subCategories = (List<MarlinApp.Data.tblSubCategory>)ViewData["SubCategories"];
+}
+
+
+<!--<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="~/Scripts/bootstrap.min.js" />
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>-->
+
+
+<div style="font-family:Arial;text-align:center;position:center">
+
+    <img src="~/Content/Images/marlin.jpg" alt="Alternate Text" width="200" />
+    <br /> <br />
+    <h4>Building Product Selection Platform</h4>
+
+</div>
+
+
+<form id="search-form" method="post">
+    <div class="input-group d-flex justify-content-center p-4">
+        <div class="input-group-append">
+            <select class="searchElement" id="categorySelect" style="width:200px" required>
+                <!--<option selected disabled>Choose a category</option>-->
+                @if (@categories != null)
+                {
+                    foreach (var c in @categories) // Print the categories
+                    {
+                        if (ViewBag.Category != null && ViewBag.Category.Equals(c.Category_Name))
+                        {
+                            <option selected>@c.Category_Name</option>
+                        }
+                        else
+                        {
+                            <option>@c.Category_Name</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+        <div class="input-group-append">
+            <select class="searchElement" id="subCategorySelect" style="width:200px" required>
+                <!--<option selected disabled>Choose a subcategory</option>-->
+
+                @if (@subCategories != null)
+                {
+                    foreach (var s in @subCategories)
+                    {
+                        if (ViewBag.SubCategory != null && ViewBag.SubCategory.Equals(s.SubCategory_Name))
+                        {
+                            <option selected>@s.SubCategory_Name</option>
+                        }
+                        else
+                        {
+                            <option>@s.SubCategory_Name</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+        <input id="search-input" name="search" type="text" class="form-control" aria-describedby="button-addon4">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
+

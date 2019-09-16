@@ -43,7 +43,7 @@ namespace MarlinWebApp.Repo
             return this.context.tblProducts.Find(productId);
         }
 
-        public IEnumerable<tblProduct> GetProducts()
+        public IEnumerable<tblProduct> GetAllProducts()
         {
             return this.context.tblProducts.ToList();
         }
@@ -51,6 +51,21 @@ namespace MarlinWebApp.Repo
         public tblUser GetUserByName(string username)
         {
             return this.context.tblUsers.Find(username);
+        }
+
+        public IEnumerable<tblCategory> GetAllCategories()
+        {
+            return this.context.tblCategories.ToList();
+        }
+
+        public IEnumerable<tblSubCategory> GetSubCategoriesByCategoryName(string categoryName)
+        {
+            var query = this.context.tblCategories.First(c => c.Category_Name.Equals(categoryName));
+            if (query != null)
+            {
+                return (from s in this.context.tblSubCategories where s.Category_ID == query.Category_ID select s).ToList();
+            }
+            else return null;
         }
 
         public void InsertProducts(List<tblProduct> products)
