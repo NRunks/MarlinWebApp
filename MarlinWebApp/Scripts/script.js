@@ -29,3 +29,7 @@ $('#subCategorySelect').on("change", function (ev) {
     $("#search-input").prop("disabled", false);
 });
 
+$('#ModelYear').on("change", function () {
+
+})
+

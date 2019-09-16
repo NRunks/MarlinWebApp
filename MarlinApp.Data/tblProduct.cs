@@ -31,7 +31,6 @@ namespace MarlinApp.Data
         public string Series_Infro { get; set; }
         public Nullable<int> Document_ID { get; set; }
         public string Featured { get; set; }
-        public Nullable<float> Price { get; set; }
         public string Brand { get; set; }
         public string Screen_Size { get; set; }
         public string RAM { get; set; }
@@ -40,6 +39,7 @@ namespace MarlinApp.Data
         public string Operating_System { get; set; }
         public string Color { get; set; }
         public string Storage_Space { get; set; }
+        public string Price { get; set; }
     
         public virtual tblDocument tblDocument { get; set; }
         public virtual tblManufacturer tblManufacturer { get; set; }

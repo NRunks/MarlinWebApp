@@ -4,7 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="67fdc17737a147ce8325420d16093340" Name="Diagram1">
+      <Diagram DiagramId="f13d66fb353b43cc8030ce148f90446f" Name="Diagram1">
+        <EntityTypeShape EntityType="MarlinModel.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MarlinModel.tblCategory" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MarlinModel.tblDepartment" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MarlinModel.tblDocument" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
@@ -16,7 +17,7 @@
         <EntityTypeShape EntityType="MarlinModel.tblSubCategory" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="MarlinModel.tblTechSpecFilter" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="MarlinModel.tblTypeFilter" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarlinModel.tblUser" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarlinModel.tblUser" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="MarlinModel.tblSubCategory_Category_ID_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MarlinModel.tblDepartment_Manufacturer_ID_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MarlinModel.tblProduct_Document_ID_FK" ManuallyRouted="false" />

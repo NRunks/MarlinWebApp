@@ -36,6 +36,27 @@ namespace MarlinWebApp.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(string year, string price, string screen, 
+            string ram, string processor, string storage, string brand, string os)
+        {
+            List<tblProduct> products = new List<tblProduct>(this.repository.GetAllProducts());
+            List<tblProduct> productList = new List<tblProduct>();
+
+
+            foreach (tblProduct product in products)
+            {
+                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(price) || price.Equals(product.Price)) &&
+                    (isNullOrEmpty(screen) || screen.Equals(product.Screen_Size)) && (isNullOrEmpty(ram) || ram.Equals(product.RAM))
+                    && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || os.Equals(product.Operating_System))) 
+                {
+                    productList.Add(product);
+                }
+            }
+            ViewBag.Products = productList;
+            return View();
+        }
         public ActionResult ProductSummary()
         {
             return View();
@@ -55,6 +76,11 @@ namespace MarlinWebApp.Controllers
         public ActionResult Compare()
         {
             return View();
+        }
+
+        public bool isNullOrEmpty(string s)
+        {
+            return (s == null || s == String.Empty);
         }
 
     }

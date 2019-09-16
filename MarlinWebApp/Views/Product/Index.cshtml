@@ -8,6 +8,7 @@
     string category = (ViewData["Category"] != null && ViewData["Category"].ToString() != String.Empty) ? ViewData["Category"].ToString() : "";
     string subcategory = (ViewData["SubCategory"] != null && ViewData["SubCategory"].ToString() != String.Empty) ? ViewData["SubCategory"].ToString() : "";
     string search = (ViewData["Search"] != null && ViewData["Search"].ToString() != String.Empty) ? ViewData["Search"].ToString() : "";
+    List<MarlinApp.Data.tblProduct> products = ViewBag.Products;
 }
 
 
@@ -57,24 +58,11 @@
                             <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Type</div>
                             <div class="modal-body">
                                 <div class="column side" style="width:30%;float:left">
-                                    <label>Use Type</label> <br />
                                     <label>Color</label><br />
                                     <label>Operating System</label><br />
                                     <label>Model year</label>
                                 </div>
                                 <div class="column middle" style="width:65%; float:right">
-                                    <label>
-                                        <span>
-                                            Laptop
-                                            <input type="radio" checked="checked" name="radio1">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Desktop
-                                            <input type="radio" checked="checked" name="radio1">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                    </label><br />
                                     <label>
                                         <input list="processor" type="text">
                                         <datalist id="processor">
@@ -181,7 +169,7 @@
                                 </datalist>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit">Search</button>
+                                <button class="btn btn-primary btn-lg" type="submit">Search</button>
                             </div>
 
 
@@ -190,115 +178,118 @@
                     </div>
                 </div>
             </div>
-
-            <div id="YearSpec" class="product-section">
-                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Model Year</span>
-            </div>
-            <div id="ModelYear" class="Property product-section">
-                <select id="yearSelect" class="propertyName ProductSelect">
-                    <option value="" selected>Any</option>
-                    <option value="low">< 2017</option>
-                    <option value="mid">2018</option>
-                    <option value="high">2019</option>
-                </select>
-            </div>
-            <div id="TechSpec" class="product-section">
-                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Tech Specification</span>
-            </div>
-            <div id="TechSpecDetail" class="product-section">
-                <div class="Property">
-                    <!--<span class="propertyName">Price</span> <br />
-                    <span class="range-container">
-                        <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
-                    </span>
-                    -
-                    <span class="range-container">
-                        <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
-                    </span>
-                    <br />-->
-                    <select id="priceSelect" class="propertyName ProductSelect">
+            <form method="post">
+                <div id="YearSpec" class="product-section">
+                    <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Model Year</span>
+                </div>
+                <div id="ModelYear" class="Property product-section">
+                    <select id="yearSelect" name="year" class="propertyName ProductSelect">
                         <option value="" selected>Any</option>
-                        <option value="low">$1 - $99</option>
-                        <option value="mid">$100 - $399</option>
-                        <option value="high">$400 - $799</option>
-                        <option value="very-high">$800+</option>
+                        <option value="2016">< 2017</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
                     </select>
                 </div>
-                <div class="Property">
-                    <span class="PropertyName">Screen Size</span> <br />
-                    <span class="range-container">
-                        <select id="priceSelect" class="ProductSelect">
+                <div id="TechSpec" class="product-section">
+                    <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Tech Specification</span>
+                </div>
+                <div id="TechSpecDetail" class="product-section">
+                    <div class="Property">
+                        <!--<span class="propertyName">Price</span> <br />
+                        <span class="range-container">
+                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
+                        </span>
+                        -
+                        <span class="range-container">
+                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
+                        </span>
+                        <br />-->
+                        <select id="priceSelect" name="price" class="propertyName ProductSelect">
                             <option value="" selected>Any</option>
-                            <option value="xs">< 19"</option>
-                            <option value="mid">19" - 22"</option>
-                            <option value="high">22" - 27"</option>
-                            <option value="very-high">27"+</option>
+                            <option value="low">$1 - $99</option>
+                            <option value="mid">$100 - $399</option>
+                            <option value="high">$400 - $799</option>
+                            <option value="very-high">$800+</option>
                         </select>
-                    </span>
-                </div>
-                <div class="Property">
-                    <span class="PropertyName">RAM</span> <br />
-                    <span class="range-container">
-                        <select id="ramSelect" class="ProductSelect">
+                    </div>
+                    <div class="Property">
+                        <span class="PropertyName">Screen Size</span> <br />
+                        <span class="range-container">
+                            <select id="priceSelect" name="screen" class="ProductSelect">
+                                <option value="" selected>Any</option>
+                                <option value="xs">< 19"</option>
+                                <option value="md">19" - 22"</option>
+                                <option value="lg">22" - 27"</option>
+                                <option value="xl">27"+</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="Property">
+                        <span class="PropertyName">RAM</span> <br />
+                        <span class="range-container">
+                            <select id="ramSelect" name="ram" class="ProductSelect">
+                                <option value="" selected>Any</option>
+                                <option value="4GB">4GB</option>
+                                <option value="8GB">8GB</option>
+                                <option value="16GB">16GB+</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="Property">
+                        <span class="propertyName">Processor</span> <br />
+                        <select id="processorSelect" name="processor" class="ProductSelect">
                             <option value="" selected>Any</option>
-                            <option value="4GB">250GB</option>
-                            <option value="8GB">500GB</option>
-                            <option value="16GB+">1TB</option>
+                            <option value="IntelI7">8th Gen Intel i7</option>
+                            <option value="IntelI5">Dual-core Intel Core i5 processor</option>
+                            <option value="Ryzen5">AMD 1st Generation Ryzen 5</option>
+                            <option value="CoreI7">8th Gen Core i7</option>
+                            <option value="CoreI5">Core i5</option>
+                            <option value="IntelN5000">Intel Pentium Silver N5000></option>
                         </select>
-                    </span>
+                    </div>
+                    <div class="Property">
+                        <span class="propertyName">Storage</span> <br />
+                        <select id="storageSelect" name="storage" class="ProductSelect">
+                            <option value="" selected>Any</option>
+                            <option value="250GB">250GB</option>
+                            <option value="500GB">500GB</option>
+                            <option value="1TB">1TB</option>
+                            <option value="2TB">2TB+</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="Property">
-                    <span class="propertyName">Processor</span> <br />
-                    <select id="processorSelect" class="ProductSelect">
+                <div id="Brand" class="product-section">
+                    Brand
+                    <select id="brandSelect" name="brand" class="ProductSelect">
                         <option value="" selected>Any</option>
-                        <option value="IntelI7">8th Gen Intel i7</option>
-                        <option value="IntelI5">Dual-core Intel Core i5 processor</option>
-                        <option value="Ryzen5">AMD 1st Generation Ryzen 5</option>
-                        <option value="CoreI7">8th Gen Core i7</option>
-                        <option value="CoreI5">Core i5</option>
-                        <option value="IntelN5000">Intel Pentium Silver N5000></option>
-                    </select>
-                </div>
-                <div class="Property">
-                    <span class="propertyName">Storage</span> <br />
-                    <select id="storageSelect" class="ProductSelect">
-                        <option value="" selected>Any</option>
-                        <option value="250GB">250GB</option>
-                        <option value="500GB">500GB</option>
-                        <option value="1TB">1TB</option>
-                        <option value="2TB">2TB+</option>
-                    </select>
-                </div>
-            </div>
-            <div id="Brand" class="product-section">
-                Brand
-                <select id="brandSelect" class="ProductSelect">
-                    <option value="" selected>Any</option>
-                    <option value="HP">HP</option>
-                    <option value="Apple">Apple</option>
-                    <option value="Lenovo">Lenovo</option>
-                    <option value="Dell">Dell</option>
-                </select>
-            </div>
-            <div id="PastSelection" class="product-section">
-                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Operating System</span>
-            </div>
-            <div id="PastSelectionDetail" class="product-section">
-                <div class="Property">
-                    <select id="osSelect" class="ProductSelect">
-                        <option value="" selected>Any</option>
-                        <option value="OSX">Mac OS X</option>
-                        <option value="Windows10">Windows 10</option>
-                        <option value="Windows7">Windows 7</option>
+                        <option value="HP">HP</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Lenovo">Lenovo</option>
                         <option value="Dell">Dell</option>
                     </select>
                 </div>
-            </div>
+                <div id="PastSelection" class="product-section">
+                    <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Operating System</span>
+                </div>
+                <div id="PastSelectionDetail" class="product-section">
+                    <div class="Property">
+                        <select id="osSelect" name="os" class="ProductSelect">
+                            <option value="" selected>Any</option>
+                            <option value="OSX">Mac OS X</option>
+                            <option value="Windows10">Windows 10</option>
+                            <option value="Windows7">Windows 7</option>
+                            <option value="Dell">Dell</option>
+                        </select>
+                    </div>
+                </div>
 
-            <div id="Certification">
-                Certification
 
-            </div>
+                <div id="Certification">
+                    <button type="submit" class="btn btn-primary btn-lg"></button>
+
+                </div>
+            </form>
         </div>
         <div class="column middle">
             <!--<div style="padding:10px">Mechanical > HCA Fan</div>-->
@@ -309,7 +300,24 @@
                     <li class="breadcrumb-item active" aria-current="page">@search</li>
                 </ol>
             </nav>
-            <div class="product">
+
+            @if (ViewBag.Products != null)
+            {
+                foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
+                {
+                    <div class="product">
+                        @product.Model_Year
+                        @product.Price
+                        @product.Screen_Size
+                        @product.RAM
+                        @product.Processor_Model
+                        @product.Storage_Space
+                        @product.Brand
+                        @product.Operating_System
+                    </div>
+                }
+            }
+            <!--<div class="product">
                 <a href="">
                     <img src="" class="product-image">
                     <div class="product-title">
@@ -346,7 +354,7 @@
                     10firm / 1492global
                 </div>
 
-            </div>
+            </div>-->
             <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
 
         </div>
