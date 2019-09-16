@@ -36,6 +36,11 @@ namespace MarlinWebApp
                    defaults: new { controller = "Product", action = "Index" }
             );
             routes.MapRoute(
+                   name: "invalid",
+                   url: "invalid",
+                   defaults: new { controller = "Invalid", action = "Invalid" }
+            );
+            routes.MapRoute(
                name: "ProductPage",
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Product", action = "Show", id = UrlParameter.Optional }

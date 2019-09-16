@@ -57,6 +57,10 @@
     
 }
 
+.property {
+    width: 100%
+}
+
 /*Product navigation bar*/
 .topnav {
     overflow: hidden;

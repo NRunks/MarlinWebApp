@@ -2,7 +2,6 @@
 }
 
 .header-wrapper {
-    background-color: #80aaff;
     margin-top: -50px;
     margin-left: -15px;
     border-bottom: 1px solid grey;
@@ -44,29 +43,34 @@ column {
 }
 
 .column.side {
-    width: 15%;
+    width: 25%;
 }
 .column.middle {
-    width: 80%;
+    width: 75%;
 }
-#SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpec, #TechSpecDetail, #Brand, #PastSelection, #PastSelectionDetail, #Certification {
+
+.product-section {
+    padding: 16px;
+    background-color: #DCDCDC;
+}
+
+ #ProductProject, #ProductType, #ModelYear, #TechSpec, #YearSpec, #TechSpecDetail, #Brand, #PastSelection, #PastSelectionDetail, #Certification {
     border: 1px solid grey;
     border-top: 1px solid white;
 }
 
-#SearchSaveClear {
-    padding-top: 10px;
-    padding-bottom: 10px;
-   
-}
+    .ProductSelect {
+        width: 100%;
+    }
+
+    #SearchSaveClear {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 
 
 .SaveClearbutton {
     margin-left: 20px;
-}
-#Save, #Clear {
-    background-color: grey;
-    color: white;
 }
 
 #Product:hover, #Project:hover {
@@ -205,7 +209,7 @@ column {
     font-size:11px;
 }
 
-#PropertyName {
+.PropertyName {
     margin-left: 10px;
     font-size: 15px;
     color: dimgrey

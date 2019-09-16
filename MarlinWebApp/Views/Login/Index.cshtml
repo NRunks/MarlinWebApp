@@ -1,7 +1,11 @@
-﻿
+﻿@Scripts.Render("~/Scripts/UploadImage.js")
+
+<link rel="stylesheet" href="~/Content/RegisterUser.css" />
+
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <div class="d-flex justify-content-center">
@@ -28,7 +32,54 @@
                 </div>
                 <div class="row form-check">
                     <div class="col-3"><button type="submit" class="btn btn-primary">Log in</button></div>
-                    <div><a href="#" class="custom-anchor">Not yet a member? Sign up now!</a></div>
+                    <div><a href="#" class="custom-anchor" data-toggle="modal" data-target="#myModal">Not yet a member? Sign up now!</a></div>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
+                                    <div class="modal-title">Register as User</div>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td class="tableCol1"></td>
+                                            <td class="tableCol2">
+                                                <b>Image Preview</b><br />
+                                                <img id="blah" /> <br />
+                                                <b>Your Profile Pic</b>
+                                                <input type="file" onchange="loadImg(event)" required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableCol1">UserName: </td>
+                                            <td class="tableCol2"><input type="text" name="username" placeholder="User Name" required /></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableCol1">Email Address: </td>
+                                            <td class="tableCol2"><input type="email" name="email" placeholder="Email id" required /></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableCol1">Password: </td>
+                                            <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableCol1">Confirm Password: </td>
+                                            <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit">Sign Up</button>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <span class="error-message">@ViewBag.errorMessage</span>

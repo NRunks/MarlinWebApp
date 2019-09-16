@@ -1,0 +1,11 @@
+﻿#blah {
+    max-width: 80px;
+    border-radius:50%;
+}
+
+.tableCol1 {
+    width: 48%;
+}
+.tableCol2 {
+    width: 52%;
+}
