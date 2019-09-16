@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "Load";
 }
+
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
 <link rel="stylesheet" href="~/Content/ProductList.css" />
-<link rel="stylesheet" href="~/Scripts/bootstrap.min.js" />
-<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="~/Content/bootstrap.css" />
+
 <script type="text/javascript" src="~/Scripts/script.js"></script>
 
 
+
 <div class="header-wrapper">
-    <img class="card-img-top" src="~/Content/Images/marlin.jpg" />
+    <img class="card-img-top" style="width: 115px;height: 89px;" src="~/Content/Images/marlin.jpg" />
     <input type="text" placeholder="Search..">
     <button type="submit" class="searchButton"><b>Find</b></button>
 
@@ -32,7 +39,7 @@
                 <input id="Project" type="button" value="Project" />
             </div>
             <div id="ProductType">
-                Product Type
+                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Product Type:</span>
                 <button type="button" class="" data-toggle="modal" data-target="#myModal" style="float:right;height:23px">Search</button>
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -45,97 +52,117 @@
                             </div>
                             <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Type</div>
                             <div class="modal-body">
-                                <div class="column side" style="width:25%;float:left">
+                                <div class="column side" style="width:30%;float:left">
                                     <label>Use Type</label> <br />
-                                    <label>Application</label><br />
-                                    <label>Mounting </label><br />
-                                    <label>Accessories</label><br />
+                                    <label>Color</label><br />
+                                    <label>Operating System</label><br />
                                     <label>Model year</label>
                                 </div>
                                 <div class="column middle" style="width:65%; float:right">
                                     <label>
                                         <span>
-                                            Commercial
+                                            Laptop
                                             <input type="radio" checked="checked" name="radio1">
                                             <span class="checkmark"></span>
                                         </span>
                                         <span>
-                                            Industrial
-                                            <input type="radio" checked="checked" name="radio1">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Residental
+                                            Desktop
                                             <input type="radio" checked="checked" name="radio1">
                                             <span class="checkmark"></span>
                                         </span>
                                     </label><br />
                                     <label>
-                                        <span>
-                                            Indoor
-                                            <input type="radio" checked="checked" name="radio2">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Outdoor
-                                            <input type="radio" checked="checked" name="radio2">
-                                            <span class="checkmark"></span>
-                                        </span>
+                                        <input list="processor" type="text">
+                                        <datalist id="processor">
+                                            <option value="Natural Sliver"></option>
+                                            <option value="Gold"></option>
+                                            <option value="Era Gray"></option>
+                                            <option value="Black"></option>
+                                            <option value="Silver"></option>
+                                        </datalist>
+
                                     </label><br />
+
                                     <label>
                                         <span>
-                                            Roof
-                                            <input type="radio" checked="checked" name="radio3">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Wall
-                                            <input type="radio" checked="checked" name="radio3">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Free Standing
-                                            <input type="radio" checked="checked" name="radio3">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                    </label><br />
-                                    <label>
-                                        <span>
-                                            With Light
+                                            Windown
                                             <input type="radio" checked="checked" name="radio4">
                                             <span class="checkmark"></span>
                                         </span>
                                         <span>
-                                            Without light
+                                            Mac OS
                                             <input type="radio" checked="checked" name="radio4">
                                             <span class="checkmark"></span>
                                         </span>
                                     </label><br />
                                     <label>
                                         <span class="range-container">
-                                            <input type="text" id="number"  value="0" />
-                                            <button onclick="reduceValue(this)" value="down">&#8249</button>
-                                            <button onclick="increaseValue(this)" value="up">&#8250</button>
+                                            <input type="number" min="1997" max="2019" oninput="validity.valid||(value='0');" />
                                         </span>
                                         -
                                         <span class="range-container">
-                                            <input type="text" id="number"  value="0" />
-                                            <button onclick="reduceValue(this)" value="down">&#8249 </button>
-                                            <button onclick="increaseValue(this)" value="up">&#8250</button>
+                                            <input type="number" min="1997" max="2019" oninput="validity.valid||(value='10000');" />
                                         </span>
                                     </label>
                                 </div>
                             </div>
                             <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Technical Details</div>
                             <div class="modal-body">
-                                <div class="column side" style="width:25%;float:left">
-                                    <label>Use Type</label> <br />
-                                    <label>Application</label><br />
-                                    <label>Mounting </label><br />
-                                    <label>Accessories</label><br />
-                                    <label>Model year</label>
+                                <div class="column side" style="width:30%;float:left">
+                                    <label>Price</label> <br />
+                                    <label>Screen size(Inches)</label><br />
+                                    <label>RAM</label><br />
+                                    <label>Processor</label><br />
+                                    <label>Storage</label>
                                 </div>
                                 <div class="column middle" style="width:65%; float:right">
+                                    <label>
+                                        <span class="range-container">
+                                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
+                                        </span>
+                                        -
+                                        <span class="range-container">
+                                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span class="range-container">
+                                            <input type="number" min="0" max="20" oninput="validity.valid||(value='0');" />
+                                        </span>
+                                        -
+                                        <span class="range-container">
+                                            <input type="number" min="0" max="20" oninput="validity.valid||(value='10000');" />
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <span class="range-container">
+                                            <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='0');" />
+                                        </span>
+                                        -
+                                        <span class="range-container">
+                                            <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='10000');" />
+                                        </span>
+                                    </label><br />
+                                    <label>
+                                        <input list="processor" type="text">
+                                        <datalist id="processor">
+                                            <option value="8th Gen Intel i7"></option>
+                                            <option value="Dual-core Intel Core i5 processor"></option>
+                                            <option value="AMD 1st Generation Ryzen 5"></option>
+                                            <option value="8th Gen Core i7"></option>
+                                            <option value="Core i5"></option>
+                                            <option value="Intel Pentium Silver N5000"></option>
+                                        </datalist>
+                                    </label><br />
+                                    <label>
+                                        <input list="storage" type="text">
+                                        <datalist id="storage">
+                                            <option value="250GB"></option>
+                                            <option value="500GB"></option>
+                                            <option value="1TB"></option>
+                                            <option value="2TB"></option>
+                                        </datalist>
+                                    </label><br />
                                 </div>
                             </div>
                             <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Brand</div>
@@ -143,9 +170,10 @@
                                 Select Brands
                                 <input list="brand" type="text">
                                 <datalist id="brand">
-                                    <option value="Columbia Company"></option>
-                                    <option value="Laars"></option>
-                                    <option value="Hurst & Welding Company, Inc"></option>
+                                    <option value="HP"></option>
+                                    <option value="Macbook"></option>
+                                    <option value="Lenovo"></option>
+                                    <option value="Mac"></option>
                                 </datalist>
                             </div>
                             <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey;">Others</div>
@@ -153,17 +181,20 @@
                                 With the words
                                 <input list="brand" type="text">
                                 <datalist id="brand">
-                                   
+                                    <option value="HP"></option>
+                                    <option value="Macbook"></option>
+                                    <option value="Lenovo"></option>
+                                    <option value="Mac"></option>
                                 </datalist>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" >Search</button>
+                                <button type="submit">Search</button>
                             </div>
 
 
                         </div>
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div id="ModelYear">
@@ -171,59 +202,99 @@
                 <input id="YearFrom" type="text" />-<input id="YearTo" type="text" />
             </div>
             <div id="TechSpec">
-                <span style="margin-left:5px;font-size:12px;color:black">Technology Specification</span>
+                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Tech Specification</span>
             </div>
             <div id="TechSpecDetail">
                 <div class="Property">
-                    <span id="PropertyName">AirFlow(CFM)</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
+                    <span id="PropertyName">Price</span> <br />
+                    <span class="range-container">
+                        <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
+                    </span>
+                    -
+                    <span class="range-container">
+                        <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
+                    </span>
+                    <br />
                 </div>
                 <div class="Property">
-                    <span id="PropertyName">MaxPower(W)</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
+                    <span id="PropertyName">Screen Size</span> <br />
+                    <span class="range-container">
+                        <input type="number" min="0" max="20" oninput="validity.valid||(value='0');" />
+                    </span>
+                    -
+                    <span class="range-container">
+                        <input type="number" min="0" max="20" oninput="validity.valid||(value='10000');" />
+                    </span>
                 </div>
                 <div class="Property">
-                    <span id="PropertyName">Sound at max speed(dBA)</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
+                    <span id="PropertyName">RAM</span> <br />
+                    <span class="range-container">
+                        <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='0');" />
+                    </span>
+                    -
+                    <span class="range-container">
+                        <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='10000');" />
+                    </span>
                 </div>
                 <div class="Property">
-                    <span id="PropertyName">Fan sweep diameter(in)</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
+                    <span id="PropertyName">Processor</span> <br />
+                    <input list="processor" type="text">
+                    <datalist id="processor">
+                        <option value="8th Gen Intel i7"></option>
+                        <option value="Dual-core Intel Core i5 processor"></option>
+                        <option value="AMD 1st Generation Ryzen 5"></option>
+                        <option value="8th Gen Core i7"></option>
+                        <option value="Core i5"></option>
+                        <option value="Intel Pentium Silver N5000"></option>
+                    </datalist>
                 </div>
                 <div class="Property">
-                    <span id="PropertyName">Fan sweep diameter(in)</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
+                    <span id="PropertyName">Storage</span> <br />
+                    <input list="storage" type="text">
+                    <datalist id="storage">
+                        <option value="250GB"></option>
+                        <option value="500GB"></option>
+                        <option value="1TB"></option>
+                        <option value="2TB"></option>
+                    </datalist>
                 </div>
             </div>
             <div id="Brand">
                 Brand
-
+                <input list="brand" type="text">
+                <datalist id="brand">
+                    <option value="HP"></option>
+                    <option value="Macbook"></option>
+                    <option value="Lenovo"></option>
+                    <option value="Mac"></option>
+                </datalist>
             </div>
             <div id="PastSelection">
-                <div class="Property">
-                    <span id="PropertyName">Firm</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
-                </div>
-                <div class="Property">
-                    <span id="PropertyName">Global</span> <br />
-                    <input class="PropertyFrom" type="text" />
-                    --------------
-                    <input class="PropertyTo" type="text" />
-                </div>
-
+                <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Past Specification</span>
             </div>
+                <div id="PastSelectionDetail">
+                    <div class="Property">
+                        <span id="PropertyName">Firm</span> <br />
+                        <span class="range-container">
+                            <input type="number" min="0" max="16"  oninput="validity.valid||(value='0');" />
+                        </span>
+                        -
+                        <span class="range-container">
+                            <input type="number" min="0" max="16"  oninput="validity.valid||(value='10000');" />
+                        </span>
+                    </div>
+                    <div class="Property">
+                        <span id="PropertyName">Global</span> <br />
+                        <span class="range-container">
+                            <input type="number" min="0" max="10000" oninput="validity.valid||(value='0');" />
+                        </span>
+                        -
+                        <span class="range-container">
+                            <input type="number" min="0" max="10000" oninput="validity.valid||(value='10000');" />
+                        </span>
+                    </div>
+                </div>
+ 
             <div id="Certification">
                 Certification
 
@@ -269,6 +340,8 @@
                 </div>
 
             </div>
+            <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+        
         </div>
     </div>
 

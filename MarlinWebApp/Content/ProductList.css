@@ -49,7 +49,7 @@ column {
 .column.middle {
     width: 80%;
 }
-#SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpec, #TechSpecDetail, #Brand, #PastSelection,#Certification {
+#SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpec, #TechSpecDetail, #Brand, #PastSelection, #PastSelectionDetail, #Certification {
     border: 1px solid grey;
     border-top: 1px solid white;
 }
@@ -190,7 +190,7 @@ column {
    
 }
 .range-container input {
-        width: 20%;
+        width: 32%;
 
         height: 25px;
     }
