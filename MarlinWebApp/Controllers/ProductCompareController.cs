@@ -9,7 +9,8 @@ namespace MarlinWebApp.Controllers
     public class ProductCompareController : Controller
     {
         // GET: ProductCompare
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(string products)
         {
             return View();
         }

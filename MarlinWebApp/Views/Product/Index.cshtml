@@ -356,7 +356,7 @@
                     @foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
                     {
                         <form method="post" action="ProductSummary">
-                            <div class="card" style="min-width: 250px; max-width: 250px;">
+                            <div class="card product-card" style="min-width: 250px; max-width: 250px;">
                                 <img src="~/Content/Images/Products/@product.Product_Image" class="card-img-top" alt="..." style="min-height: 188px; max-height: 188px;">
                                 <div class="card-body">
                                     <h5 class="card-title">@product.Product_Name</h5>
@@ -370,10 +370,10 @@
                                 <div class="card-footer clearfix">
                                     <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
                                 </div>
-                                <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="1" />
+                                <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="@product.Product_ID" />
                                 @Html.HiddenFor(p => p.Product_ID)
                                 <div class="d-flex justify-content-around">
-                                    <input type="checkbox" name="compare" value="compare">
+                                    <input class="compare-input" type="checkbox" name="compare" value="compare">
                                     <label for="compare">Compare</label>
                                     <button type="submit" class="btn btn-outline-info">View Details</button>
                                 </div>
@@ -383,7 +383,7 @@
 
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary btn-block" style="margin-top: 32px; padding-left:32px; padding-right:32px;">
+                    <button id="compareButton" type="submit" class="btn btn-outline-primary btn-block" style="margin-top: 32px; padding-left:32px; padding-right:32px;">
                         Compare
                     </button>
                 </div>
