@@ -29,7 +29,60 @@ $('#subCategorySelect').on("change", function (ev) {
     $("#search-input").prop("disabled", false);
 });
 
-$('#ModelYear').on("change", function () {
-
+$('#compareButton').on("click", function () {
+    var inputs = [];
+    var promise = new Promise(function (resolve, reject) {
+        inputs = $(".card-deck").find(".compare-input").map(function () {
+            if ($(this).prop("checked") == true) {
+                console.log($(this).parent().parent().find("input[name='Product_ID']").val())
+                return $(this).parent().parent().find("input[name='Product_ID']").val();
+            }
+        }).get();
+        if (inputs.length > 0)
+            resolve();
+        else reject();
+    });
+    promise.then(function (success) {
+        $.ajax({
+            type: "GET",
+            url: "/ProductCompare",
+            data: {
+                'products': JSON.stringify(inputs.to)
+            },
+            contentType: "application/json",
+            cache: false,
+            success: function (result) {
+                window.location.href = "/ProductCompare?products=" + JSON.stringify(inputs);
+            },
+            error: function (error) {
+                console.log(error.message);
+            }
+        });
+    }, function (failure) {
+            //Do nothing
+    });
+    /*var inputs = $(".card-deck").find(".compare-input").map(function () {
+        if ($(this).prop("checked") == true) {
+            console.log($(this).parent().parent().find("input[name='Product_ID']").val())
+            return this;
+        }
+    }).get().success(function () {
+        console.log(inputs);
+        $.ajax({
+            type: "GET",
+            url: "/ProductCompare",
+            data: {
+                'products': JSON.stringify(inputs)
+            },
+            contentType: "application/json",
+            cache: false,
+            success: function (result) {
+                window.location.href = "/ProductCompare?products=" + JSON.stringify(inputs);
+            },
+            error: function (error) {
+                console.log(error.message);
+            }
+        });
+    });*/
 })
 

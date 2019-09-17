@@ -242,6 +242,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvalidController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductCompareController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductSummaryController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -304,6 +305,7 @@
     <Content Include="Views\Product\_TopBar.cshtml" />
     <Content Include="Views\Invalid\Index.cshtml" />
     <Content Include="Views\Product\Compare.cshtml" />
+    <Content Include="Views\ProductCompare\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
