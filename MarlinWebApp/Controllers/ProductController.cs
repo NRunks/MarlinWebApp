@@ -52,7 +52,7 @@ namespace MarlinWebApp.Controllers
 
             foreach (tblProduct product in products)
             {
-                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || os.Equals(product.Operating_System)))
+                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || (product.Operating_System.IndexOf(os) != -1)))
                 {
                     bool screenMatches = false;
                     bool priceMatches = false;
