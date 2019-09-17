@@ -25,7 +25,6 @@ namespace MarlinApp.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblCategory> tblCategories { get; set; }
         public virtual DbSet<tblDepartment> tblDepartments { get; set; }
         public virtual DbSet<tblDocument> tblDocuments { get; set; }

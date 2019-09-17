@@ -44,6 +44,7 @@ column {
 
 .column.side {
     width: 25%;
+    min-width: 260px;
 }
 .column.middle {
     width: 75%;
@@ -54,9 +55,15 @@ column {
     background-color: #DCDCDC;
 }
 
- #ProductProject, #ProductType, #ModelYear, #TechSpec, #YearSpec, #TechSpecDetail, #Brand, #PastSelection, #PastSelectionDetail, #Certification {
+#SearchSaveClear, #ProductProject, #ProductType, #ModelYear, #TechSpecDetail, #BrandSelectionDetail, #OSSelectionDetail, #Certification {
     border: 1px solid grey;
     border-top: 1px solid white;
+}
+
+#YearSpec, #TechSpec, #BrandDetail, #OSDetail {
+    border: 1px solid grey;
+    border-top: 1px solid white;
+    border-bottom: none;
 }
 
     .ProductSelect {
