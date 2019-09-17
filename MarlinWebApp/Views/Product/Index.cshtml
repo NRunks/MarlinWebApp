@@ -372,53 +372,23 @@
                                 </div>
                                 <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="1" />
                                 @Html.HiddenFor(p => p.Product_ID)
-                                <button type="submit" class="btn btn-primary"></button>
+                                <div class="d-flex justify-content-around">
+                                    <input type="checkbox" name="compare" value="compare">
+                                    <label for="compare">Compare</label>
+                                    <button type="submit" class="btn btn-outline-info">View Details</button>
+                                </div>
                             </div>
                         </form>
                     }
 
                 </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary btn-block" style="margin-top: 32px; padding-left:32px; padding-right:32px;">
+                        Compare
+                    </button>
+                </div>
             }
-            <!--<div class="product">
-                <a href="">
-                    <img src="" class="product-image">
-                    <div class="product-title">
-                        Emerson Luray Eco Series CF860
-                    </div>
-                </a>
-                <div class="product-prorperty">
-                    8,500 CFM <br />
-                    33 W at max speed <br />
-                    40 dBAat max speed <br />
-                    60” fan sweep diameter<br />
-                </div>
-                <div class="pastspecifications">
-                    Past specifications:<br />
-                    10firm / 1492global
-                </div>
-
-            </div>
-            <div class="product">
-                <a href="">
-                    <img src="" class="product-image">
-                    <div class="product-title">
-                        Emerson Luray Eco Series CF860
-                    </div>
-                </a>
-                <div class="product-prorperty">
-                    8,500 CFM <br />
-                    33 W at max speed <br />
-                    40 dBAat max speed <br />
-                    60” fan sweep diameter<br />
-                </div>
-                <div class="pastspecifications">
-                    Past specifications:<br />
-                    10firm / 1492global
-                </div>
-
-            </div>-->
             <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-
         </div>
     </div>
 
