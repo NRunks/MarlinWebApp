@@ -11,7 +11,8 @@ namespace MarlinWebApp.Controllers
     public class ProductController : Controller
     {
         public MarlinRepository repository;
-
+        string pCategory;
+        string pSubcategory;
         public ProductController()
         {
             this.repository = new MarlinRepository(new MarlinEntities3());
@@ -31,6 +32,8 @@ namespace MarlinWebApp.Controllers
             ViewData["Category"] = category;
             ViewData["SubCategory"] = subcategory;
             ViewData["Search"] = search;
+            pCategory = category;
+            pSubcategory = subcategory;
             if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty) || (search == null || search == String.Empty))
             {
                 //return RedirectToRoute("Invalid");  <----- Remember to uncomment
@@ -48,7 +51,7 @@ namespace MarlinWebApp.Controllers
 
             foreach (tblProduct product in products)
             {
-                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || os.Equals(product.Operating_System)))
+                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || (product.Operating_System.IndexOf(os) != -1)))
                 {
                     bool screenMatches = false;
                     bool priceMatches = false;
@@ -127,9 +130,12 @@ namespace MarlinWebApp.Controllers
             ViewData["OS"] = os;
             return View();
         }
-        public ActionResult ProductSummary()
+        [HttpPost]
+        public ActionResult ProductSummary(string Product_ID)
         {
-            return View();
+            tblProduct product = this.repository.GetProductByID(Convert.ToInt32(Product_ID));
+            ViewBag.Product = product;
+            return View("~/Views/ProductSummary/index.cshtml", product);
         }
         public ActionResult ProductDetails()
         {

@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "ProductSummary";
+    MarlinApp.Data.tblProduct product = ViewBag.Product;
 }
 
 
@@ -14,16 +15,16 @@
 
 <div class="page">
     <div id="header">
-        This is the page header Category > SubCaterogy > Series
+        category > subcategory > @product.Model
     </div>
     <div id="product-name">
-        This is for the product name: Name/Type/Series    Past Specification
+        This is for the product name: @product.Product_Name/@product.Brand/@product.Model    Past Specification
     </div>
     <div class="topnav">
-        <a href="ProductSummary">Product Summary</a>
-        <a href="ProductDetails">Product Details</a>
-        <a href="ProductDocumentation">Product Documentation</a>
-        <a href="Contact">Contact</a>
+        <a href="#">Product Summary</a>
+        <a href="#">Product Details</a>
+        <a href="#">Product Documentation</a>
+        <a href="#">Contact</a>
     </div>
    <div class="product-info">
     
