@@ -51,128 +51,174 @@
 
                         <!-- Modal content-->
                         <div class="modal-content">
-                            <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
-                                <div class="modal-title">Find fans</div>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Type</div>
-                            <div class="modal-body">
-                                <div class="column side" style="width:30%;float:left">
-                                    <label>Color</label><br />
-                                    <label>Operating System</label><br />
-                                    <label>Model year</label>
+                                <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
+                                    <div class="modal-title">Find @subcategory</div>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                <div class="column middle" style="width:65%; float:right">
-                                    <label>
-                                        <input list="processor" type="text">
-                                        <datalist id="processor">
-                                            <option value="Natural Sliver"></option>
-                                            <option value="Gold"></option>
-                                            <option value="Era Gray"></option>
-                                            <option value="Black"></option>
-                                            <option value="Silver"></option>
-                                        </datalist>
-
-                                    </label><br />
-
-                                    <label>
-                                        <span>
-                                            Windown
-                                            <input type="radio" checked="checked" name="radio4">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                        <span>
-                                            Mac OS
-                                            <input type="radio" checked="checked" name="radio4">
-                                            <span class="checkmark"></span>
-                                        </span>
-                                    </label><br />
-                                    <label>
-                                        <span class="range-container">
-                                            <input type="number" min="1997" max="2019" oninput="validity.valid||(value='0');" />
-                                        </span>
-                                        -
-                                        <span class="range-container">
-                                            <input type="number" min="1997" max="2019" oninput="validity.valid||(value='10000');" />
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Technical Details</div>
-                            <div class="modal-body">
-                                <div class="column side" style="width:30%;float:left">
-                                    <label>Price</label> <br />
-                                    <label>Screen size(Inches)</label><br />
-                                    <label>RAM</label><br />
-                                    <label>Processor</label><br />
-                                    <label>Storage</label>
-                                </div>
-                                <div class="column middle" style="width:65%; float:right">
-                                    <label>
-                                        <span class="range-container">
-                                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
-                                        </span>
-                                        -
-                                        <span class="range-container">
-                                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
-                                        </span>
-                                    </label><br />
-                                    <label>
-                                        <span class="range-container">
-                                            <input type="number" min="0" max="20" oninput="validity.valid||(value='0');" />
-                                        </span>
-                                        -
-                                        <span class="range-container">
-                                            <input type="number" min="0" max="20" oninput="validity.valid||(value='10000');" />
-                                        </span>
-                                    </label><br />
-                                    <label>
-                                        <span class="range-container">
-                                            <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='0');" />
-                                        </span>
-                                        -
-                                        <span class="range-container">
-                                            <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='10000');" />
-                                        </span>
-                                    </label><br />
-                                    <label>
-                                        <input list="processor" type="text">
-                                        <datalist id="processor">
-                                            <option value="8th Gen Intel i7"></option>
-                                            <option value="Dual-core Intel Core i5 processor"></option>
-                                            <option value="AMD 1st Generation Ryzen 5"></option>
-                                            <option value="8th Gen Core i7"></option>
-                                            <option value="Core i5"></option>
-                                            <option value="Intel Pentium Silver N5000"></option>
-                                        </datalist>
-                                    </label><br />
-                                    <label>
-                                        <input list="storage" type="text">
-                                        <datalist id="storage">
-                                            <option value="250GB"></option>
-                                            <option value="500GB"></option>
-                                            <option value="1TB"></option>
-                                            <option value="2TB"></option>
-                                        </datalist>
-                                    </label><br />
-                                </div>
-                            </div>
-                            <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey;">Others</div>
-                            <div class="brand">
-                                With the words
-                                <input list="brand" type="text">
-                                <datalist id="brand">
-                                    <option value="HP"></option>
-                                    <option value="Macbook"></option>
-                                    <option value="Lenovo"></option>
-                                    <option value="Mac"></option>
-                                </datalist>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary btn-lg" type="submit">Search</button>
-                            </div>
+                                <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Type</div>
+                                <div class="modal-body">
 
 
+                                    <!--<table style="width:100%">
+                                        <tr>
+                                            <th>Operating System</th>
+                                            <th>Brand</th>
+                                            <th>Year</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <select name="os">
+                                                        <option value="" selected>Any</option>
+                                                        <option value="OSX">Mac OS X</option>
+                                                        <option value="Windows10">Windows 10</option>
+                                                        <option value="Windows7">Windows 7</option>
+                                                        <option value="Dell">Dell</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select name="brand">
+                                                    <option value="" selected>Any</option>
+                                                    <option value="HP">HP</option>
+                                                    <option value="Apple">Apple</option>
+                                                    <option value="Lenovo">Lenovo</option>
+                                                    <option value="Dell">Dell</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select name="year">
+                                                    <option value="" selected>Any</option>
+                                                    <option value="2016">< 2017</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr><hr></tr>
+                                    </table>-->
+
+
+
+
+
+
+
+                                    <div class="column side" style="width:30%;float:left">
+                                        <label>Color</label><br />
+                                        <label>Operating System</label><br />
+                                        <label>Model year</label>
+                                    </div>
+                                    <div class="column middle" style="width:65%; float:right">
+                                        <label>
+                                            <input list="processor" type="text">
+                                            <datalist id="processor">
+                                                <option value="Natural Sliver"></option>
+                                                <option value="Gold"></option>
+                                                <option value="Era Gray"></option>
+                                                <option value="Black"></option>
+                                                <option value="Silver"></option>
+                                            </datalist>
+
+                                        </label><br />
+
+                                        <label>
+                                            <span>
+                                                Windown
+                                                <input type="radio" checked="checked" name="radio4">
+                                                <span class="checkmark"></span>
+                                            </span>
+                                            <span>
+                                                Mac OS
+                                                <input type="radio" checked="checked" name="radio4">
+                                                <span class="checkmark"></span>
+                                            </span>
+                                        </label><br />
+                                        <label>
+                                            <span class="range-container">
+                                                <input type="number" min="1997" max="2019" oninput="validity.valid||(value='0');" />
+                                            </span>
+                                            -
+                                            <span class="range-container">
+                                                <input type="number" min="1997" max="2019" oninput="validity.valid||(value='10000');" />
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey">Technical Details</div>
+                                <div class="modal-body">
+                                    <div class="column side" style="width:30%;float:left">
+                                        <label>Price</label> <br />
+                                        <label>Screen size(Inches)</label><br />
+                                        <label>RAM</label><br />
+                                        <label>Processor</label><br />
+                                        <label>Storage</label>
+                                    </div>
+                                    <div class="column middle" style="width:65%; float:right">
+                                        <label>
+                                            <span class="range-container">
+                                                <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
+                                            </span>
+                                            -
+                                            <span class="range-container">
+                                                <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
+                                            </span>
+                                        </label><br />
+                                        <label>
+                                            <span class="range-container">
+                                                <input type="number" min="0" max="20" oninput="validity.valid||(value='0');" />
+                                            </span>
+                                            -
+                                            <span class="range-container">
+                                                <input type="number" min="0" max="20" oninput="validity.valid||(value='10000');" />
+                                            </span>
+                                        </label><br />
+                                        <label>
+                                            <span class="range-container">
+                                                <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='0');" />
+                                            </span>
+                                            -
+                                            <span class="range-container">
+                                                <input type="number" min="4" max="16" step="4" oninput="validity.valid||(value='10000');" />
+                                            </span>
+                                        </label><br />
+                                        <label>
+                                            <input list="processor" type="text">
+                                            <datalist id="processor">
+                                                <option value="8th Gen Intel i7"></option>
+                                                <option value="Dual-core Intel Core i5 processor"></option>
+                                                <option value="AMD 1st Generation Ryzen 5"></option>
+                                                <option value="8th Gen Core i7"></option>
+                                                <option value="Core i5"></option>
+                                                <option value="Intel Pentium Silver N5000"></option>
+                                            </datalist>
+                                        </label><br />
+                                        <label>
+                                            <input list="storage" type="text">
+                                            <datalist id="storage">
+                                                <option value="250GB"></option>
+                                                <option value="500GB"></option>
+                                                <option value="1TB"></option>
+                                                <option value="2TB"></option>
+                                            </datalist>
+                                        </label><br />
+                                    </div>
+                                </div>
+                                <div style="margin:0px;padding-left:10px;background-color:#f3f2f2;border:1px solid grey;">Others</div>
+                                <div class="brand">
+                                    With the words
+                                    <input list="brand" type="text">
+                                    <datalist id="brand">
+                                        <option value="HP"></option>
+                                        <option value="Macbook"></option>
+                                        <option value="Lenovo"></option>
+                                        <option value="Mac"></option>
+                                    </datalist>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-lg" type="submit">Search</button>
+                                </div>
                         </div>
 
                     </div>
@@ -196,15 +242,7 @@
                 </div>
                 <div id="TechSpecDetail" class="product-section">
                     <div class="Property">
-                        <!--<span class="propertyName">Price</span> <br />
-                        <span class="range-container">
-                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='0');" />
-                        </span>
-                        -
-                        <span class="range-container">
-                            <input type="number" min="400" max="2000" oninput="validity.valid||(value='10000');" />
-                        </span>
-                        <br />-->
+                        <span class="PropertyName">Price</span> <br />
                         <select id="priceSelect" name="price" class="propertyName ProductSelect">
                             <option value="" selected>Any</option>
                             <option value="low">$1 - $99</option>
@@ -215,29 +253,25 @@
                     </div>
                     <div class="Property">
                         <span class="PropertyName">Screen Size</span> <br />
-                        <span class="range-container">
-                            <select id="priceSelect" name="screen" class="ProductSelect">
-                                <option value="" selected>Any</option>
-                                <option value="xs">< 19"</option>
-                                <option value="md">19" - 22"</option>
-                                <option value="lg">22" - 27"</option>
-                                <option value="xl">27"+</option>
-                            </select>
-                        </span>
+                        <select id="priceSelect" name="screen" class="ProductSelect">
+                            <option value="" selected>Any</option>
+                            <option value="xs">< 19"</option>
+                            <option value="md">19" - 22"</option>
+                            <option value="lg">22" - 27"</option>
+                            <option value="xl">27"+</option>
+                        </select>
                     </div>
                     <div class="Property">
                         <span class="PropertyName">RAM</span> <br />
-                        <span class="range-container">
-                            <select id="ramSelect" name="ram" class="ProductSelect">
-                                <option value="" selected>Any</option>
-                                <option value="4GB">4GB</option>
-                                <option value="8GB">8GB</option>
-                                <option value="16GB">16GB+</option>
-                            </select>
-                        </span>
+                        <select id="ramSelect" name="ram" class="ProductSelect">
+                            <option value="" selected>Any</option>
+                            <option value="4GB">4GB</option>
+                            <option value="8GB">8GB</option>
+                            <option value="16GB">16GB+</option>
+                        </select>
                     </div>
                     <div class="Property">
-                        <span class="propertyName">Processor</span> <br />
+                        <span class="PropertyName">Processor</span> <br />
                         <select id="processorSelect" name="processor" class="ProductSelect">
                             <option value="" selected>Any</option>
                             <option value="IntelI7">8th Gen Intel i7</option>
@@ -249,7 +283,7 @@
                         </select>
                     </div>
                     <div class="Property">
-                        <span class="propertyName">Storage</span> <br />
+                        <span class="PropertyName">Storage</span> <br />
                         <select id="storageSelect" name="storage" class="ProductSelect">
                             <option value="" selected>Any</option>
                             <option value="250GB">250GB</option>
@@ -259,8 +293,10 @@
                         </select>
                     </div>
                 </div>
-                <div id="Brand" class="product-section">
-                    Brand
+                <div id="BrandDetail" class="product-section">
+                    <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Brand</span>
+                </div>
+                <div id="BrandSelectionDetail" class="product-section">
                     <select id="brandSelect" name="brand" class="ProductSelect">
                         <option value="" selected>Any</option>
                         <option value="HP">HP</option>
@@ -269,10 +305,10 @@
                         <option value="Dell">Dell</option>
                     </select>
                 </div>
-                <div id="PastSelection" class="product-section">
+                <div id="OSDetail" class="product-section">
                     <span style="margin-left:0px;font-size:15px;font: bold; color: dimgrey">Operating System</span>
                 </div>
-                <div id="PastSelectionDetail" class="product-section">
+                <div id="OSSelectionDetail" class="product-section">
                     <div class="Property">
                         <select id="osSelect" name="os" class="ProductSelect">
                             <option value="" selected>Any</option>
@@ -285,8 +321,8 @@
                 </div>
 
 
-                <div id="Certification">
-                    <button type="submit" class="btn btn-primary btn-lg"></button>
+                <div id="Certification" class="product-section">
+                    <button type="submit" class="btn btn-primary btn-lg">Search</button>
 
                 </div>
             </form>
@@ -303,19 +339,28 @@
 
             @if (ViewBag.Products != null)
             {
-                foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
-                {
-                    <div class="product">
-                        @product.Model_Year
-                        @product.Price
-                        @product.Screen_Size
-                        @product.RAM
-                        @product.Processor_Model
-                        @product.Storage_Space
-                        @product.Brand
-                        @product.Operating_System
-                    </div>
-                }
+                <div class="card-deck d-flex flex-wrap">
+                    @foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
+                    {
+
+                        <div class="card" style="min-width: 250px; max-width: 250px;">
+                            <img src="~/Content/Images/Products/@product.Product_Image" class="card-img-top" alt="..." style="min-height: 188px; max-height: 188px;">
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Product_Name</h5>
+                                <p class="card-text clearfix">
+                                    <span class="float-left">@product.Brand</span> <span class="float-right">
+                                        @product.Model
+                                    </span><br />$@product.Price<br />Storage: @product.Storage_Space<br />
+                                    Memory: @product.RAM<br /> @product.Processor_Model<br />Screen size: @product.Screen_Size<br /> @product.Operating_System<br />
+                                </p>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
+                            </div>
+                        </div>
+                    }
+
+                </div>
             }
             <!--<div class="product">
                 <a href="">

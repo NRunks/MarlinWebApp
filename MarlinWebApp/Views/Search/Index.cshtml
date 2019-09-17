@@ -28,7 +28,7 @@
     <div class="input-group d-flex justify-content-center p-4">
         <div class="input-group-append">
             <select class="searchElement" id="categorySelect" name="category" style="width:200px" required>
-                <!--<option selected disabled>Choose a category</option>-->
+                <option selected disabled>Choose a category</option>
                 @if (@categories != null)
                 {
                     foreach (var c in @categories) // Print the categories
@@ -47,7 +47,7 @@
         </div>
         <div class="input-group-append">
             <select class="searchElement" id="subCategorySelect" name="subcategory" style="width:200px" required>
-                <!--<option selected disabled>Choose a subcategory</option>-->
+                <option selected disabled>Choose a subcategory</option>
 
                 @if (@subCategories != null)
                 {
