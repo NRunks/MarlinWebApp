@@ -12,7 +12,7 @@ namespace MarlinWebApp.Controllers
     public class SearchController : Controller
     {
         public MarlinRepository repository;
-
+       
         public SearchController()
         {
             this.repository = new MarlinRepository(new MarlinEntities3());
@@ -24,6 +24,8 @@ namespace MarlinWebApp.Controllers
         }
 
         [HttpGet]
+       
+
         public ActionResult Index(string category, string subcategory)
         {
 
