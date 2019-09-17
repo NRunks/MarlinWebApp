@@ -67,9 +67,6 @@
       <DependentUpon>MarlinWebAppModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tblCategory.cs">
       <DependentUpon>MarlinWebAppModel.tt</DependentUpon>
     </Compile>
