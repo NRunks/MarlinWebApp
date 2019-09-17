@@ -127,9 +127,12 @@ namespace MarlinWebApp.Controllers
             ViewData["OS"] = os;
             return View();
         }
-        public ActionResult ProductSummary()
+        [HttpPost]
+        public ActionResult ProductSummary(string Product_ID)
         {
-            return View();
+            tblProduct product = this.repository.GetProductByID(Convert.ToInt32(Product_ID));
+            ViewBag.Product = product;
+            return View("~/Views/ProductSummary/index.cshtml", product);
         }
         public ActionResult ProductDetails()
         {
