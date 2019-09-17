@@ -1,0 +1,36 @@
+﻿@model MarlinApp.Data.tblProduct
+@using MarlinApp.Data;
+
+@{
+    ViewBag.Title = "Product Comparation";
+}
+
+<h2>Product Compare</h2>
+
+<div class="d-flex flex-wrap">
+    <div class="each_col">
+        <ul>
+            <li></li>
+            <li class="sub_head">DESTRIPTION</li>
+            <li class="info_head">Brand</li>
+            <li class="info_head">Model</li>
+            <li class="info_head">TECHNICAL SPECIFICATIONS</li>
+            <li class="sub_head">Storage Size</li>
+            <li class="info_head">Memory</li>
+            <li class="info_head">Screen Size</li>
+            <li class="info_head">Operating System</li>
+        </ul>
+    </div>
+    @foreach (tblProduct product in @Model)
+    {
+        <div class="each_col">
+            <ul>
+                @foreach ()
+</ul>
+            </div>
+}
+    /**/
+</div>
+
+
+
