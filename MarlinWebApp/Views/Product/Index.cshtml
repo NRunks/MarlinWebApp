@@ -306,14 +306,23 @@
                 foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
                 {
                     <div class="product">
-                        @product.Model_Year
-                        @product.Price
-                        @product.Screen_Size
-                        @product.RAM
-                        @product.Processor_Model
-                        @product.Storage_Space
-                        @product.Brand
-                        @product.Operating_System
+                        <div class="product-title">
+                            @product.Product_Name
+                        </div>
+                        <div class="product-prorperty">
+                            @product.Model_Year
+                            @product.Price
+                            @product.Screen_Size
+                            @product.RAM
+                            @product.Processor_Model
+                            @product.Storage_Space
+                            @product.Brand
+                            @product.Operating_System
+                        </div>
+                        <div class="pastspecifications">
+                            Past specifications:<br />
+                            10firm / 1492global
+                        </div>
                     </div>
                 }
             }
