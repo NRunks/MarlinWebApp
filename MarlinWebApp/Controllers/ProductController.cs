@@ -132,7 +132,7 @@ namespace MarlinWebApp.Controllers
         {
             tblProduct product = this.repository.GetProductByID(Convert.ToInt32(Product_ID));
             ViewBag.Product = product;
-            return View("./Views/ProductSummary/index.cshtml", product);
+            return View("~/Views/ProductSummary/index.cshtml", product);
         }
         public ActionResult ProductDetails()
         {
