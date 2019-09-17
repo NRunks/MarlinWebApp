@@ -11,7 +11,8 @@ namespace MarlinWebApp.Controllers
     public class ProductController : Controller
     {
         public MarlinRepository repository;
-
+        string pCategory;
+        string pSubcategory;
         public ProductController()
         {
             this.repository = new MarlinRepository(new MarlinEntities3());
@@ -32,6 +33,8 @@ namespace MarlinWebApp.Controllers
             ViewData["Category"] = category;
             ViewData["SubCategory"] = subcategory;
             ViewData["Search"] = search;
+            pCategory = category;
+            pSubcategory = subcategory;
             if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty) || (search == null || search == String.Empty))
             {
                 //return RedirectToRoute("Invalid");  <----- Remember to uncomment
