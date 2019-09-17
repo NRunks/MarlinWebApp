@@ -11,6 +11,8 @@
     List<MarlinApp.Data.tblProduct> products = ViewBag.Products;
 }
 
+@model MarlinApp.Data.tblProduct
+
 
 
 
@@ -342,22 +344,26 @@
                 <div class="card-deck d-flex flex-wrap">
                     @foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
                     {
-
-                        <div class="card" style="min-width: 250px; max-width: 250px;">
-                            <img src="~/Content/Images/Products/@product.Product_Image" class="card-img-top" alt="..." style="min-height: 188px; max-height: 188px;">
-                            <div class="card-body">
-                                <h5 class="card-title">@product.Product_Name</h5>
-                                <p class="card-text clearfix">
-                                    <span class="float-left">@product.Brand</span> <span class="float-right">
-                                        @product.Model
-                                    </span><br />$@product.Price<br />Storage: @product.Storage_Space<br />
-                                    Memory: @product.RAM<br /> @product.Processor_Model<br />Screen size: @product.Screen_Size<br /> @product.Operating_System<br />
-                                </p>
+                        <form method="post" action="ProductSummary">
+                            <div class="card" style="min-width: 250px; max-width: 250px;">
+                                <img src="~/Content/Images/Products/@product.Product_Image" class="card-img-top" alt="..." style="min-height: 188px; max-height: 188px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Product_Name</h5>
+                                    <p class="card-text clearfix">
+                                        <span class="float-left">@product.Brand</span> <span class="float-right">
+                                            @product.Model
+                                        </span><br />$@product.Price<br />Storage: @product.Storage_Space<br />
+                                        Memory: @product.RAM<br /> @product.Processor_Model<br />Screen size: @product.Screen_Size<br /> @product.Operating_System<br />
+                                    </p>
+                                </div>
+                                <div class="card-footer clearfix">
+                                    <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
+                                </div>
+                                <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="1" />
+                                @Html.HiddenFor(p => p.Product_ID)
+                                <button type="submit" class="btn btn-primary"></button>
                             </div>
-                            <div class="card-footer clearfix">
-                                <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
-                            </div>
-                        </div>
+                        </form>
                     }
 
                 </div>
