@@ -25,8 +25,12 @@ namespace MarlinWebApp.Controllers
         public ActionResult Index(MarlinApp.Data.tblProduct product)
         {
             tblProduct tempProduct = this.repository.GetProductByID(product.Product_ID);
+            //         tblManufacturer tempManufacturer = this.repository.GetManufacturerByID(1);
+            //         tblManufacturer_tblProduct ManuProduct = this.repository.GetManufacturerAndProductByProductID(product.Product_ID);
+            //        ViewBag.Manufacturer = tempManufacturer;
+           
             ViewBag.Product = tempProduct;
-            return View(product);
+            return View();
         }
     }
 }

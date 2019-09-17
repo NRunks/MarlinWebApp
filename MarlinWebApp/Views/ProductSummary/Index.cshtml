@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "ProductSummary";
     MarlinApp.Data.tblProduct product = ViewBag.Product;
+    MarlinApp.Data.tblManufacturer manufacturer = ViewBag.Manufacturer;
 }
 
 
@@ -30,35 +31,45 @@
     
     <div class="PageTitle">Product Summary</div>
 
-    <div class="column">
+    <div class="column side">
         Description
         <div id="description">
-            <div class="label">
-                <div class="label-text">
-                    <label>Manufacturer</label> <br />
-                    <label>Series</label> <br />
-                    <label>Label</label><br />
-                </div>
+            <div class="label-text">
+                <label>Manufacturer</label> <br />
+                <label>Model</label> <br />
+                <label>Series</label><br />
             </div>
-                <div class="result">
 
-                </div>
-            </div>
-        Type
-        <div id="type">
-            <div class="label">
-                <div class="label-text">
-                    <label>Use Types</label> <br />
-                    <label>Color</label> <br />
-                    <label>Operating System</label><br />                 
-                    <label>Model Year</label><br />
-                </div>
-            </div>
+
             <div class="result">
+                <label>@product.Brand</label> <br />
+                <label>@product.Model</label> <br />
+                <label>@product.Series</label><br />
             </div>
         </div>
     </div>
-    <div class="column">
+    <div class="column side">
+        Type
+        <div id="type">
+           
+            <div class="label-text">
+                <label>Use Types</label> <br />
+                <label>Color</label> <br />
+                <label>Operating System</label><br />
+                <label>Model Year</label><br />
+            </div>
+
+
+            <div class="result">
+                <label>Laptop</label> <br />
+                <label>@product.Color</label> <br />
+                <label>@product.Operating_System</label><br />
+                <label>@product.Model_Year</label><br />
+            </div>
+        </div>
+    </div>
+   
+    <div class="column middle">
         Technical Specifications
         <div id="TechInfo">
             <div class="label">
@@ -71,9 +82,13 @@
                 </div>
             </div>
             <div class="result">
+                <label>@product.Price</label> <br />
+                <label>@product.Screen_Size</label> <br />
+                <label>@product.RAM</label><br />
+                <label>@product.Processor_Model</label><br />
+                <label>@product.Storage_Space</label><br />
             </div>
             </div>
 
     </div>
    </div>
-</div>

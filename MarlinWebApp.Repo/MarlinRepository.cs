@@ -47,6 +47,10 @@ namespace MarlinWebApp.Repo
         {
             return this.context.tblProducts.ToList();
         }
+        public IEnumerable<tblManufacturer> GetAllManufacturers()
+        {
+            return this.context.tblManufacturers.ToList();
+        }
 
         public tblUser GetUserByName(string username)
         {

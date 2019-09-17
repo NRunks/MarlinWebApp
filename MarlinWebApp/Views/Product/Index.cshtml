@@ -370,7 +370,7 @@
                                 <div class="card-footer clearfix">
                                     <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
                                 </div>
-                                <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="1" />
+                                <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="@product.Product_ID" />
                                 @Html.HiddenFor(p => p.Product_ID)
                                 <button type="submit" class="btn btn-primary"></button>
                             </div>
