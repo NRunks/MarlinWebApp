@@ -13,7 +13,7 @@
         <!--<img class="card-img-top" src=".../100px180/" alt="Card image cap">-->
         <img class="card-img-top" src="~/Content/Images/marlin.jpg" />
         <div class="card-body">
-      
+
             <form method="post">
                 <div class="input-group mb-3 form-group">
                     <div class="input-group-prepend">
@@ -21,7 +21,7 @@
                             <img src="~/Content/Images/man.png" />
                         </span>
                     </div>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="Username" 
+                    <input id="username" type="text" class="form-control" name="username" placeholder="Username"
                            aria-describedby="basic-addon3" required>
                 </div>
                 <div class="input-group mb-3 form-group">
@@ -30,84 +30,88 @@
                             <img src="~/Content/Images/key.png" />
                         </span>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" 
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password"
                            aria-describedby="basic-addon3" required>
                 </div>
                 <div class="row form-check">
                     <div class="col-3"><button type="submit" class="btn btn-primary">Log in</button></div>
-                    <div><a href="#" class="custom-anchor" data-toggle="modal" data-target="#myModal">
-                        Not yet a member? Sign up now!</a></div>
+                    <div>
+                        <a href="#" class="custom-anchor" data-toggle="modal" data-target="#myModal">
+                            Not yet a member? Sign up now!
+                        </a>
+                    </div>
                 </div>
                 <div class="row">
                     <span class="error-message">@ViewBag.errorMessage</span>
                 </div>
             </form>
-        
+
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
-                            <div class="modal-title">Register as User</div>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <table>
-                                <tr>
-                                    <td class="tableCol1"></td>
-                                    <td class="tableCol2">
-                                        <b>Image Preview</b><br />
-                                        <img id="blah" /> <br />
-                                        <b>Your Profile Pic</b>
-                                        <input type="file" onchange="loadImg(event)" required>
-                                    </td>
+                        <form method="post">
+                            <div class="modal-header" style="padding: 0px;padding-left:10px;background-color:#786d6d;color:white">
+                                <div class="modal-title">Register as User</div>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <td class="tableCol1"></td>
+                                        <td class="tableCol2">
+                                            <b>Image Preview</b><br />
+                                            <img id="blah" /> <br />
+                                            <b>Your Profile Pic</b>
+                                            <input type="file" onchange="loadImg(event)">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="input-group mb-3 form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="username3">Username:</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="username" placeholder="User Name" aria-describedby="basic-username" required>
+                                </div>
+                                <div class="input-group mb-3 form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="email3">Email:</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-username" required>
+                                </div>
+                                <div class="input-group mb-3 form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="password3">Password:</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="password" placeholder="Password" aria-describedby="basic-username" required>
+                                </div>
+                                <div class="input-group mb-3 form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="cpassword3">Confirm Password::</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="cpassword" placeholder="Confirm Password" aria-describedby="basic-username" required>
+                                </div>
+                                <!--<tr>
+                                    <td class="tableCol1">Username: </td>
+                                    <td class="tableCol2"><input type="text" name="username" placeholder="User Name" required /></td>
                                 </tr>
-                            </table>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="username3">Username:</span>
-                                </div>
-                                <input type="text" class="form-control" name="username" placeholder="User Name" aria-describedby="basic-username" required>
+                                <tr>
+                                    <td class="tableCol1">Email Address: </td>
+                                    <td class="tableCol2"><input type="email" name="email" placeholder="Email id" required /></td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCol1">Password: </td>
+                                    <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
+                                </tr>
+                                <tr>
+                                    <td class="tableCol1">Confirm Password: </td>
+                                    <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
+                                </tr>-->
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="email3">Email:</span>
-                                </div>
-                                <input type="text" class="form-control" name="email" placeholder="User Name" aria-describedby="basic-username" required>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="password3">Password:</span>
-                                </div>
-                                <input type="text" class="form-control" name="password" placeholder="User Name" aria-describedby="basic-username" required>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="cpassword3">Confirm Password::</span>
-                                </div>
-                                <input type="text" class="form-control" name="cpassword" placeholder="User Name" aria-describedby="basic-username" required>
-                            </div>
-                            <!--<tr>
-                                <td class="tableCol1">Username: </td>
-                                <td class="tableCol2"><input type="text" name="username" placeholder="User Name" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="tableCol1">Email Address: </td>
-                                <td class="tableCol2"><input type="email" name="email" placeholder="Email id" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="tableCol1">Password: </td>
-                                <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
-                            </tr>
-                            <tr>
-                                <td class="tableCol1">Confirm Password: </td>
-                                <td class="tableCol2"><input type="password" name="password" placeholder="Password" required /></td>
-                            </tr>-->
 
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-primary btn-lg">Sign Up</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-primary btn-lg">Sign Up</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
