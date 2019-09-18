@@ -22,14 +22,21 @@ namespace MarlinWebApp.Controllers
             this.repository = repository;
         }
         // GET: ProductSummary
-        public ActionResult Index(MarlinApp.Data.tblProduct product)
+        public ActionResult Index(MarlinApp.Data.tblProduct product, string Category_Name, string SubCategory_Name)
         {
+
+            if (product.Product_ID == 0)
+            {
+                return RedirectToRoute("Invalid");
+            }
             tblProduct tempProduct = this.repository.GetProductByID(product.Product_ID);
             //         tblManufacturer tempManufacturer = this.repository.GetManufacturerByID(1);
             //         tblManufacturer_tblProduct ManuProduct = this.repository.GetManufacturerAndProductByProductID(product.Product_ID);
             //        ViewBag.Manufacturer = tempManufacturer;
-           
+
             ViewBag.Product = tempProduct;
+            ViewData["Category"] = Category_Name;
+            ViewData["Subcategory"] = SubCategory_Name;
             return View();
         }
     }

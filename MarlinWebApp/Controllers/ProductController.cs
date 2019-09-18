@@ -42,9 +42,24 @@ namespace MarlinWebApp.Controllers
             return View();
         }
 
+        public ActionResult Index(string category, string subcategory)
+        {
+            string search = Request.QueryString["search"];
+            ViewData["Category"] = category;
+            ViewData["SubCategory"] = subcategory;
+            ViewData["Search"] = (search != null && search != String.Empty) ? search : "Any";
+            pCategory = category;
+            pSubcategory = subcategory;
+            if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty))
+            {
+                return RedirectToRoute("Invalid");
+            }
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Index(string year, string price, string screen,
-            string ram, string processor, string storage, string brand, string os)
+            string ram, string processor, string storage, string brand, string os, string SubCategory_Name, string Category_Name)
         {
             List<tblProduct> products = new List<tblProduct>(this.repository.GetAllProducts());
             List<tblProduct> productList = new List<tblProduct>();
@@ -129,6 +144,8 @@ namespace MarlinWebApp.Controllers
             ViewData["Storage"] = storage;
             ViewData["Brand"] = brand;
             ViewData["OS"] = os;
+            ViewData["Category"] = Category_Name;
+            ViewData["SubCategory"] = SubCategory_Name;
             return View();
         }
         [HttpPost]
@@ -136,6 +153,15 @@ namespace MarlinWebApp.Controllers
         {
             tblProduct product = this.repository.GetProductByID(Convert.ToInt32(Product_ID));
             ViewBag.Product = product;
+            return View("~/Views/ProductSummary/index.cshtml", product);
+        }
+        [HttpPost]
+        public ActionResult ProductSummary(string Product_ID, string Category_Name, string SubCategory_Name)
+        {
+            tblProduct product = this.repository.GetProductByID(Convert.ToInt32(Product_ID));
+            ViewBag.Product = product;
+            ViewData["Category"] = Category_Name;
+            ViewData["Subcategory"] = SubCategory_Name;
             return View("~/Views/ProductSummary/index.cshtml", product);
         }
         public ActionResult ProductDetails()

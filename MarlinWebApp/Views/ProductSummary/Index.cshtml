@@ -2,7 +2,13 @@
 @{
     ViewBag.Title = "ProductSummary";
     MarlinApp.Data.tblProduct product = ViewBag.Product;
-   
+    string category = "", subcategory = "";
+    if (ViewData["Category"] != null) {
+        category = ViewData["Category"].ToString();
+    }
+    if (ViewData["SubCategory"] != null) {
+        subcategory = ViewData["SubCategory"].ToString();
+    }
 }
 
 
@@ -13,11 +19,19 @@
     <button type="submit" class="searchButton"><b>Find</b></button>
 </div>
 
-
+@if (product != null)
+{
 <div class="page">
-    <div id="header">
-        category > subcategory > @product.Model
-    </div>
+    <!--<div id="header">
+        @category > @subcategory > @product.Model
+    </div>-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">@category</a></li>
+            <li class="breadcrumb-item"><a href="#">@subcategory</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@product.Model</li>
+        </ol>
+    </nav>
     <div id="product-name">
         This is for the product name: @product.Product_Name/@product.Brand/@product.Model    Past Specification
     </div>
@@ -28,7 +42,7 @@
         <a href="#">Contact</a>
     </div>
     <div class="product-info">
-        
+
         <span class="card product-card" style="width:48%;float:left">
             <img class="card-img-top" src="~/Content/Images/Products/@product.Product_Image" style="height:330px;width:100%">
         </span>
@@ -191,3 +205,4 @@
         </div>
     </div>
 </div>
+}

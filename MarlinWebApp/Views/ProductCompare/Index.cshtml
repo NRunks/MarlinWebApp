@@ -11,15 +11,13 @@
 
 <div class="header-wrapper">
     <img class="card-img-top" style="width: 115px;height: 89px;" src="~/Content/Images/marlin.jpg" />
-    <input type="text" placeholder="Search..">
-    <button type="submit" class="searchButton"><b>Find</b></button>
 </div>
 
 <h2>Product Compare</h2>
 
     @if (ViewBag.Products != null)
     {
-        <div class="card-deck d-flex flex-wrap">
+        <div class="card-deck d-flex flex-wrap" style="background-color: whitesmoke;">
             @foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
             {
                 <form method="post" action="ProductSummary">

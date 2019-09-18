@@ -43,6 +43,9 @@ namespace MarlinWebApp.Controllers
                 }
                 List<tblProduct> productList = new List<tblProduct>(this.repository.GetMultipleProductsByID(productIDArray));
                 ViewBag.Products = productList;
+            } else
+            {
+                return RedirectToRoute("Invalid");
             }
             return View();
         }

@@ -244,8 +244,15 @@
                 </div>
                 <div id="Certification" class="product-section">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Search</button>
-
                 </div>
+                @if (category != null)
+                {
+                    <input data-val="true" id="Category_Name" name="Category_Name" type="hidden" value="@category" />
+                }
+                @if (subcategory != null)
+                {
+                    <input data-val="true" id="SubCategory_Name" name="SubCategory_Name" type="hidden" value="@subcategory" />
+                }
             </form>
         </div>
         <div class="column middle">
@@ -273,6 +280,14 @@
                                 </div>
                                 <input data-val="true" id="Product_ID" name="Product_ID" type="hidden" value="@product.Product_ID" />
                                 @Html.HiddenFor(p => p.Product_ID)
+                                @if (category != null)
+                                {
+                                    <input data-val="true" id="Category_Name" name="Category_Name" type="hidden" value="@category" />
+                                }
+                                @if (subcategory != null)
+                                {
+                                    <input data-val="true" id="SubCategory_Name" name="SubCategory_Name" type="hidden" value="@subcategory" />
+                                }
                                 <div class="d-flex justify-content-around">
                                     <input class="compare-input" type="checkbox" name="compare" value="compare">
                                     <label for="compare">Compare</label>
