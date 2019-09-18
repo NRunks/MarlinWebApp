@@ -31,12 +31,12 @@ namespace MarlinWebApp.Controllers
             string search = Request.QueryString["search"];
             ViewData["Category"] = category;
             ViewData["SubCategory"] = subcategory;
-            ViewData["Search"] = search;
+            ViewData["Search"] = (search != null && search != String.Empty)? search: "Any";
             pCategory = category;
             pSubcategory = subcategory;
-            if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty) || (search == null || search == String.Empty))
+            if ((category == null || category == String.Empty) || (subcategory == null || subcategory == String.Empty))
             {
-                //return RedirectToRoute("Invalid");  <----- Remember to uncomment
+                return RedirectToRoute("Invalid");
             }
             return View();
         }
@@ -51,7 +51,7 @@ namespace MarlinWebApp.Controllers
 
             foreach (tblProduct product in products)
             {
-                if ((isNullOrEmpty(year) || year.Equals(Convert.ToInt32(product.Model_Year))) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || (product.Operating_System.IndexOf(os) != -1)))
+                if ((isNullOrEmpty(year) || year.Equals(product.Model_Year.ToString())) && (isNullOrEmpty(ram) || ram.Equals(product.RAM)) && (isNullOrEmpty(processor) || processor.Equals(product.Processor_Model)) && (isNullOrEmpty(storage) || storage.Equals(product.Storage_Space)) && (isNullOrEmpty(brand) || brand.Equals(product.Brand)) && (isNullOrEmpty(os) || (product.Operating_System.IndexOf(os) != -1)))
                 {
                     bool screenMatches = false;
                     bool priceMatches = false;

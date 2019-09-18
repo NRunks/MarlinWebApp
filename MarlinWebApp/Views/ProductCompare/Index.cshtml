@@ -5,23 +5,43 @@
     ViewBag.Title = "Product Comparation";
 }
 
+@{
+    List<MarlinApp.Data.tblProduct> products = ViewBag.Products;
+}
+
+<div class="header-wrapper">
+    <img class="card-img-top" style="width: 115px;height: 89px;" src="~/Content/Images/marlin.jpg" />
+    <input type="text" placeholder="Search..">
+    <button type="submit" class="searchButton"><b>Find</b></button>
+</div>
+
 <h2>Product Compare</h2>
 
-<div class="d-flex flex-wrap">
-    <div class="each_col">
-        <ul>
-            <li></li>
-            <li class="sub_head">DESTRIPTION</li>
-            <li class="info_head">Brand</li>
-            <li class="info_head">Model</li>
-            <li class="info_head">TECHNICAL SPECIFICATIONS</li>
-            <li class="sub_head">Storage Size</li>
-            <li class="info_head">Memory</li>
-            <li class="info_head">Screen Size</li>
-            <li class="info_head">Operating System</li>
-        </ul>
-    </div>
-    </div>
+    @if (ViewBag.Products != null)
+    {
+        <div class="card-deck d-flex flex-wrap">
+            @foreach (MarlinApp.Data.tblProduct product in ViewBag.Products)
+            {
+                <form method="post" action="ProductSummary">
+                    <div class="card product-card" style="min-width: 250px; max-width: 250px;">
+                        <img src="~/Content/Images/Products/@product.Product_Image" class="card-img-top" alt="..." style="min-height: 188px; max-height: 188px;">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Product_Name</h5>
+                            <p class="card-text clearfix">
+                                <span class="float-left">@product.Brand</span> <span class="float-right">
+                                    @product.Model
+                                </span><br />$@product.Price<br />Storage: @product.Storage_Space<br />
+                                Memory: @product.RAM<br /> @product.Processor_Model<br />Screen size: @product.Screen_Size<br /> @product.Operating_System<br />
+                            </p>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <small class="text-muted float-left">@product.Model_Year</small> <small class="text-muted float-right">@product.Color</small>
+                        </div>
+                    </div>
+                </form>
+            }
+            </div>
+    }
 
 
 

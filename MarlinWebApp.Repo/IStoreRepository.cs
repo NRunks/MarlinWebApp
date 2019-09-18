@@ -12,6 +12,7 @@ namespace MarlinWebApp.Repo
         tblUser GetUserByName(string username);
         IEnumerable<tblProduct> GetAllProducts();
         tblProduct GetProductByID(int productId);
+        IEnumerable<tblProduct> GetMultipleProductsByID(int[] IDs);
         tblManufacturer GetManufacturerByID(int manufacturerID);
         tblManufacturer_tblProduct GetManufacturerAndProductByManufacturerID(int manufacturerID);
         tblManufacturer_tblProduct GetManufacturerAndProductByProductID(int productID);

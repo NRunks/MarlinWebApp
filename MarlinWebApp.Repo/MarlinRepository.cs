@@ -48,6 +48,14 @@ namespace MarlinWebApp.Repo
             return this.context.tblProducts.ToList();
         }
 
+        public IEnumerable<tblProduct> GetMultipleProductsByID(int[] IDs)
+        {
+            var query = from p in this.context.tblProducts
+            where IDs.Contains(p.Product_ID)
+            select p;
+            return query.ToList();
+        }
+
         public tblUser GetUserByName(string username)
         {
             return this.context.tblUsers.Find(username);

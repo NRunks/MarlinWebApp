@@ -16,7 +16,7 @@ namespace MarlinWebApp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -25,11 +25,11 @@ namespace MarlinWebApp
                 new { controller = "Search", action = "Category", category = "", subcategory = "" }
             );
 
-            routes.MapRoute(
+            /*routes.MapRoute(
                     name: "login",
                     url: "login",
                     defaults: new { controller = "Login", action = "Index" }
-             );
+             );*/
             routes.MapRoute(
                    name: "product",
                    url: "product",

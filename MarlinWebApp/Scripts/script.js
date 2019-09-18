@@ -31,6 +31,7 @@ $('#subCategorySelect').on("change", function (ev) {
 
 $('#compareButton').on("click", function () {
     var inputs = [];
+    var results = "";
     var promise = new Promise(function (resolve, reject) {
         inputs = $(".card-deck").find(".compare-input").map(function () {
             if ($(this).prop("checked") == true) {
@@ -38,8 +39,13 @@ $('#compareButton').on("click", function () {
                 return $(this).parent().parent().find("input[name='Product_ID']").val();
             }
         }).get();
-        if (inputs.length > 0)
+        if (inputs.length > 0) {
+            results += inputs[0];
+            for (let i = 1; i < inputs.length; i++) {
+                results += "," + inputs[i];
+            }
             resolve();
+        }
         else reject();
     });
     promise.then(function (success) {
@@ -47,12 +53,12 @@ $('#compareButton').on("click", function () {
             type: "GET",
             url: "/ProductCompare",
             data: {
-                'products': JSON.stringify(inputs.to)
+                'products': results
             },
             contentType: "application/json",
             cache: false,
             success: function (result) {
-                window.location.href = "/ProductCompare?products=" + JSON.stringify(inputs);
+                window.location.href = "/ProductCompare?products=" + results;
             },
             error: function (error) {
                 console.log(error.message);
