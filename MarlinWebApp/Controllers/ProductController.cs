@@ -24,6 +24,7 @@ namespace MarlinWebApp.Controllers
         }
         // GET: Product
         [HttpGet]
+
         public ActionResult Index()
         {
             string category = Request.QueryString["category"];

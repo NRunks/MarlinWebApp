@@ -8,6 +8,7 @@ namespace MarlinWebApp.Controllers
 {
     public class HomeController : Controller
     {
+   //     [MyAuthorize]
         public ActionResult Index()
         {
             return View();
